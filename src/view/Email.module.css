@@ -1,0 +1,150 @@
+.banner {
+  background-image: url('../assets/email-banner.png');
+  background-size: cover;
+  background-position: center;
+  height: 70vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  position: relative;
+  margin-bottom: 120px;
+}
+
+.bannerOverlay {
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 40px 60px;
+  box-sizing: border-box;
+  color: white;
+}
+
+.bannerOverlay h1 {
+  font-size: 32px;
+  font-weight: bold;
+  margin: 0 0 20px;
+  letter-spacing: 1px;
+}
+
+.bannerOverlay p {
+  font-size: 16px;
+  line-height: 1.6;
+  max-width: 960px;
+  margin: 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 64px;
+}
+
+.headerTitle {
+  font-size: 32px;
+  font-weight: bold;
+  color: #000;
+  margin-bottom: 40px;
+}
+
+.flexLayout {
+  display: flex;
+  gap: 60px;
+  justify-content: space-between;
+  align-items: stretch;
+  flex-wrap: wrap;
+}
+
+.left,
+.right {
+  flex: 1;
+  min-width: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.subTitle {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 14px;
+  color: #000;
+}
+
+.selectBox {
+  width: 100%;
+  height: 48px;
+  padding: 0 20px;
+  border: 2px solid #07431E;
+  border-radius: 25px;
+  margin-bottom: 20px;
+  font-size: 14px;
+  background-color: white;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20'%3E%3Cpath fill='%2307431E' d='M5.516 7.548l4.484 4.484 4.484-4.484 1.416 1.416-5.9 5.9-5.9-5.9z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  background-size: 14px;
+  appearance: none;
+}
+
+.textarea {
+  width: 100%;
+  height: 300px;
+  padding: 14px;
+  font-size: 16px;
+  border: 2px solid #07431E;
+  border-radius: 8px;
+  resize: none;
+  background-color: white;
+}
+
+.textarea:disabled {
+  background-color: #f4f4f4;
+  color: #888;
+}
+
+.previewBox {
+  height: 380px;
+  border: 2px solid #07431E;
+  border-radius: 8px;
+  padding: 14px;
+  font-size: 16px;
+  background-color: #fff;
+  white-space: pre-wrap;
+}
+
+.copyBtn,
+.clearBtn {
+  margin-top: 30px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 30px;
+  padding: 14px 32px;
+  text-align: center;
+  cursor: pointer;
+  border: none;
+  width: 100%;
+}
+
+.clearBtn {
+  background-color: #F4CF4E;
+  color: #fff;
+}
+
+.clearBtn:hover {
+  background-color: #e5b800;
+}
+
+.copyBtn {
+  background-color: #1f4329;
+  color: #fff;
+}
+
+.copyBtn:hover {
+  background-color: #0f2e18;
+}
+
+.note {
+  color: #000;
+  font-size: 16px;
+  margin-bottom: 12px;
+}

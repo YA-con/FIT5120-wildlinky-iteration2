@@ -1,0 +1,96 @@
+.container {
+    padding: 100px 64px;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: #fdfaf3;
+    font-size: 18px;
+    line-height: 1.6;
+  }
+  
+  .breadcrumb {
+    color: #666;
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+  
+  .breadcrumbLink {
+    text-decoration: none;
+    color: #666;
+  }
+  
+  .title {
+    font-size: 34px;
+    font-weight: bold;
+    color: #07431E;
+    margin-bottom: 12px;
+  }
+  
+  .subtext {
+    color: #444;
+    font-size: 20px;
+    margin-bottom: 8px;
+  }
+  
+  .source {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 48px;
+  }
+  
+  .forestBlock {
+    margin-bottom: 72px;
+  }
+  
+  .forestTitle {
+    color: #07431E;
+    font-size: 24px;
+    margin-bottom: 16px;
+  }
+  
+  .forestImg {
+    width: 100%;
+    border-radius: 12px;
+    margin-bottom: 16px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  }
+  
+  .forestInfo {
+    padding-left: 20px;
+  }
+  
+  .forestInfo ul {
+    padding-left: 20px;
+    margin-top: 6px;
+  }
+
+  .divider {
+    height: 4px;
+    width: 100%;
+    background-color: #07431E;
+    margin: 60px 0;
+    border-radius: 4px;
+  }
+
+  .buttonContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 64px;
+  }
+  
+  .ctaButton {
+    background-color: #F9CF39;
+    color: #fff;
+    font-size: 24px;
+    font-weight: bold;
+    padding: 14px 48px;
+    border-radius: 40px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .ctaButton:hover {
+    background-color: #e0b900;
+  }
+  
+  

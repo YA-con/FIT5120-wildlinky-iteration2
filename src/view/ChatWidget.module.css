@@ -1,0 +1,376 @@
+.banner {
+  background-image: url('../assets/email-banner.png');
+  background-size: cover;
+  background-position: center;
+  height: 70vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  position: relative;
+  margin-bottom: 120px;
+}
+
+.bannerOverlay {
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 40px 60px;
+  box-sizing: border-box;
+  color: white;
+}
+
+.bannerOverlay h1 {
+  font-size: 32px;
+  font-weight: bold;
+  margin: 0 0 20px;
+  letter-spacing: 1px;
+}
+
+.bannerOverlay p {
+  font-size: 16px;
+  line-height: 1.6;
+  max-width: 960px;
+  margin: 0;
+}
+
+/* Container & Layout */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 64px;
+}
+
+.headerTitle {
+  font-size: 32px;
+  font-weight: bold;
+  color: #000;
+  margin-bottom: 40px;
+}
+
+.flexLayout {
+  display: flex;
+  gap: 60px;
+  justify-content: space-between;
+  align-items: stretch;
+  flex-wrap: wrap;
+}
+
+.left,
+.right {
+  flex: 1;
+  min-width: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.subTitle {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 14px;
+  color: #000;
+}
+
+.selectBox {
+  width: 100%;
+  height: 48px;
+  padding: 0 20px;
+  border: 2px solid #07431E;
+  border-radius: 25px;
+  margin-bottom: 20px;
+  font-size: 14px;
+  background-color: white;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20'%3E%3Cpath fill='%2307431E' d='M5.516 7.548l4.484 4.484 4.484-4.484 1.416 1.416-5.9 5.9-5.9-5.9z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  background-size: 14px;
+  appearance: none;
+}
+
+.textarea {
+  width: 100%;
+  height: 300px;
+  padding: 14px;
+  font-size: 16px;
+  border: 2px solid #07431E;
+  border-radius: 8px;
+  resize: none;
+  background-color: white;
+}
+
+.textarea:disabled {
+  background-color: #f4f4f4;
+  color: #888;
+}
+
+.previewBox {
+  height: 380px;
+  border: 2px solid #07431E;
+  border-radius: 8px;
+  padding: 14px;
+  font-size: 16px;
+  background-color: #fff;
+  white-space: pre-wrap;
+}
+
+
+.copyBtn,
+.clearBtn {
+  margin-top: 30px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 30px;
+  padding: 14px 32px;
+  text-align: center;
+  cursor: pointer;
+  border: none;
+  width: 100%;
+}
+
+.clearBtn {
+  background-color: #F4CF4E;
+  color: #fff;
+}
+
+.clearBtn:hover {
+  background-color: #e5b800;
+}
+
+.copyBtn {
+  background-color: #1f4329;
+  color: #fff;
+}
+
+.copyBtn:hover {
+  background-color: #0f2e18;
+}
+
+.note {
+  color: #000;
+  font-size: 16px;
+  margin-bottom: 12px;
+}
+
+/* ========================== */
+/* ====== Chat Widget ======= */
+/* ========================== */
+
+.chatWidget {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  font-family: 'Helvetica Neue', sans-serif;
+}
+
+.toggleButton {
+  width: 64px;
+  height: 64px;
+  background: transparent;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  transition: transform 0.2s ease;
+}
+
+.toggleButton:hover {
+  transform: scale(1.05);
+}
+
+
+.chatBox {
+  width: 320px;
+  height: 500px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  padding: 10px 16px;
+  background-color: #274375;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  position: relative;
+}
+
+.avatar {
+  width: 36px;
+  height: 36px;
+  margin-right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.avatar svg {
+  width: 100%;
+  height: 100%;
+}
+
+.title {
+  flex-grow: 1;
+}
+
+.more {
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.messages {
+  flex: 1;
+  padding: 15px;
+  overflow-y: auto;
+  background: #f9fafb;
+}
+
+.messageRow {
+  display: flex;
+  align-items: center; 
+  margin-bottom: 10px;
+}
+
+.avatarBubble {
+  width: 30px;
+  height: 30px;
+  margin-right: 8px;
+  margin-top: 6px; 
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.user {
+  align-self: flex-end;
+  background: #4f46e5;
+  color: white;
+  margin-left: auto;
+  padding: 12px 16px;
+  border-radius: 18px 18px 18px 18px;
+  max-width: 70%;
+  font-size: 14px;
+  text-align: left;
+}
+
+.bot {
+  align-self: flex-start;
+  background: #e5e7eb;
+  color: #111827;
+  padding: 12px 16px;
+  border-radius: 18px 18px 18px 18px;
+  max-width: 70%;
+  font-size: 14px;
+  text-align: left;
+}
+
+.optionsContainer {
+  display: flex;
+  flex-wrap: wrap; 
+  gap: 10px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.optionBubble {
+  border: 2px solid #274375;
+  background-color: #ffffff;
+  color: #274375;
+  padding: 6px 16px;
+  border-radius: 9999px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s, transform 0.1s;
+}
+
+.optionBubble:hover {
+  background-color: #274375;
+  color: white;
+  transform: scale(1.05);
+}
+
+
+
+.inputArea {
+  display: flex;
+  border-top: 1px solid #e5e7eb;
+  background: #f9fafb;
+}
+
+.inputArea input {
+  flex: 1;
+  border: none;
+  padding: 14px;
+  outline: none;
+  font-size: 14px;
+  background: transparent;
+}
+
+.inputArea button {
+  padding: 0 20px;
+  border: none;
+  background: #274375;
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.inputArea button:hover {
+  background: #4338ca;
+}
+
+.closeButton {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 32px;
+  height: 32px;
+  background: #e5e7eb;
+  border: none;
+  border-radius: 50%;
+  font-size: 20px;
+  color: #374151;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: background 0.2s, transform 0.2s;
+}
+
+.closeButton:hover {
+  background: #d1d5db;
+  transform: scale(1.1);
+}
+.optionsArea {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 10px 0 20px 48px;
+}
+
+.toggleButton svg {
+  width: 68px !important;
+  height: 68px !important;
+}
+
+

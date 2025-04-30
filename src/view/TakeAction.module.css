@@ -1,0 +1,153 @@
+.wrapper {
+  background-color: #fdfdfd;
+  color: #122;
+  font-family: system-ui, Arial, sans-serif;
+  padding-bottom: 80px;
+  width: 100%;
+}
+
+.banner {
+  background-image: url('../assets/take-action.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 70vh;
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end; 
+  margin-bottom: 0;
+  padding: 0;
+}
+
+.bannerOverlay {
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5); 
+  padding: 40px 60px;
+  box-sizing: border-box;
+  color: white;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
+.bannerOverlay h1 {
+  font-size: 32px;
+  font-weight: bold;
+  margin: 0 0 20px;
+  letter-spacing: 1px;
+}
+
+.bannerOverlay p {
+  font-size: 16px;
+  line-height: 1.6;
+  max-width: 960px;
+  margin: 0;
+}
+
+.sectionTitle {
+  font-size: 22px;
+  font-weight: 700;
+  text-align: center;
+  margin: 60px 0 24px;
+  color: #12391e;
+  text-underline-offset: 6px;
+  letter-spacing: 1px;
+}
+
+.card {
+  border: 1px solid #1b4024;
+  border-radius: 8px;
+  padding: 24px;
+  margin: 0 auto 40px;
+  max-width: 800px;
+  font-size: 16px;
+  line-height: 1.6;
+  background-color: white;
+}
+
+.card ul {
+  padding-left: 20px;
+}
+
+.card ul li {
+  margin-bottom: 8px;
+}
+
+.accordionWrapper {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.accordionItem {
+  background-color: #e5f0e7;
+  border-radius: 6px;
+  padding: 16px 20px;
+  margin: 10px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  font-family: Georgia, serif;
+  font-size: 16px;
+  color: #12391e;
+  transition: background-color 0.3s ease;
+}
+
+.accordionItem:hover {
+  background-color: #d7e7dc;
+}
+
+.accordionIcon {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.accordionContent {
+  background-color: #f2f8f4;
+  border-radius: 6px;
+  padding: 16px 20px;
+  margin-top: 8px;
+  font-size: 15px;
+  line-height: 1.6;
+  color: #222;
+  border-left: 4px solid #12391e;
+}
+
+.buttonGroup {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  margin-top: 32px;
+}
+
+.actionButton {
+  background-color: #2e533b;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 12px 28px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.actionButton:hover {
+  background-color: #1d3d2b;
+}
+
+@media (max-width: 768px) {
+  .banner {
+    height: 100vh;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .bannerOverlay h1 {
+    font-size: 24px;
+  }
+
+  .buttonGroup {
+    flex-direction: column;
+    gap: 16px;
+  }
+}

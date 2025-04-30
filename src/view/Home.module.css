@@ -1,0 +1,178 @@
+.hero {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.heroOverlay {
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+  color: white;
+  padding: 48px 32px;
+  text-align: center;
+  max-width: 720px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.heroOverlay h1 {
+  font-size: 48px;
+  font-weight: bold;
+  line-height: 1.4;
+  margin-bottom: 20px;
+}
+
+.heroOverlay p {
+  font-size: 18px;
+  margin-bottom: 32px;
+  max-width: 540px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.downArrow {
+  font-size: 40px;
+  color: #ffffff;
+  cursor: pointer;
+  position: absolute;
+  left: 50%;
+  bottom: 10%;
+  transform: translateX(-50%);
+  z-index: 10;
+  animation: bounce 1.5s infinite ease-in-out;
+  transition: transform 0.3s ease;
+}
+
+.downArrow:hover {
+  transform: translateX(-50%) scale(1.2);
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    transform: translateX(-50%) translateY(10px);
+  }
+}
+
+.section {
+  min-height: 100vh;
+  padding: 80px 32px;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease;
+  position: relative;
+}
+
+.visible {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+.greenSection {
+  background-color: #F3F7F2;
+}
+
+.whiteSection {
+  background-color: #ffffff;
+}
+
+.sectionContent {
+  max-width: 1440px;
+  margin: 0 auto;
+  display: flex;
+  padding: 0 clamp(24px, 5vw, 96px);
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 40px;
+}
+
+.sectionText {
+  flex: 1 1 600px;
+}
+
+.sectionText h2 {
+  font-size: 48px;
+  color: #07431E;
+  margin-bottom: 24px;
+  font-family: 'Georgia', serif;
+}
+
+.sectionText p {
+  font-size: 18px;
+  color: #222;
+  margin-bottom: 12px;
+}
+
+.sectionText strong {
+  color: #922B21;
+}
+
+.sectionText button {
+  background-color: #2e533b;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 12px 28px;
+  margin-top: 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.sectionText button:hover {
+  background-color: #1d3d2b;
+}
+
+.sectionImagesGrid {
+  flex: 1 1 500px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.sectionImagesGrid img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.sectionImgLeft,
+.sectionImgRight {
+  width: 100%;
+  height: auto;
+  max-width: 500px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.sectionImgLeft {
+  transform: translateX(-40px);
+  transition: all 0.8s ease;
+}
+
+.sectionImgRight {
+  transform: translateX(40px);
+  transition: all 0.8s ease;
+}
+
+.visible .sectionImgLeft,
+.visible .sectionImgRight {
+  transform: none;
+  opacity: 1;
+}
+
+.sectionNumber {
+  display: none;
+}
