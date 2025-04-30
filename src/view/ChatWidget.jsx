@@ -34,7 +34,7 @@ const ChatWidget = () => {
     setLoading(true);
 
     try {
-      const response = await axios.post("http://127.0.0.1:5000/api/chat", {
+      const response = await axios.post("https://fit5120-t28-wildlinky.onrender.com/api/chat", {
         message: messageToSend,
       });
       setMessages([
