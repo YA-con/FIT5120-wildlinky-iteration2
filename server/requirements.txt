@@ -4,3 +4,4 @@ supabase>=1.0.3
 geopy>=2.3.0
 gunicorn>=20.0.0
 openai==0.28
+python-dotenv>=1.0.0

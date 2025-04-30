@@ -138,7 +138,7 @@ def load_species_summary():
     print(f"[INIT] Summary ready. Suburbs counted: {len(suburb_results)}")
 
 
-# ========== API 路由 ==========
+
 @app.route('/api/species-summary', methods=['GET'])
 def get_species_summary():
     return jsonify(cached_species_summary)
@@ -253,7 +253,7 @@ def get_filtered_species_locations():
     })
 
 
-# ========== 初始化 ==========
+
 def initialize_server_data():
     load_species_data()
     load_species_summary()
