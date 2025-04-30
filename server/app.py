@@ -17,7 +17,8 @@ CORS(app)
 url = os.getenv("SUPABASE_URL")
 key = os.getenv("SUPABASE_KEY")
 openai.api_key = os.getenv("OPENAI_API_KEY")
-print(f"[DEBUG] SUPABASE_URL: {url}")
+print(f"[DEBUG] SUPABASE_URL: {url,key}")
+print(f"[DEBUG] OPENAI_API_KEY: {os.getenv("OPENAI_API_KEY")}")
 supabase = create_client(url, key)
 
 cached_species_locations = []
