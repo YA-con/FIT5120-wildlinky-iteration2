@@ -1,16 +1,24 @@
 from flask import Flask, jsonify, request
 from flask_cors import CORS
 from supabase import create_client
+from dotenv import load_dotenv
+from geopy.distance import geodesic
+import openai
+import os
 import math
+
+
+load_dotenv()
 
 app = Flask(__name__)
 CORS(app)
 
-url = "https://tchwwnlazebhayosesvf.supabase.co"
-key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRjaHd3bmxhemViaGF5b3Nlc3ZmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDM0MDEwMTIsImV4cCI6MjA1ODk3NzAxMn0.wztsNJdzWyK6wOte077OP-bSrx_89Bq0a4-UsjDuxf0"
+
+url = os.getenv("SUPABASE_URL")
+key = os.getenv("SUPABASE_KEY")
+openai.api_key = os.getenv("OPENAI_API_KEY")
 
 supabase = create_client(url, key)
-
 
 cached_species_locations = []
 cached_species_summary = {}
@@ -38,28 +46,22 @@ def get_all_species_locations():
 
     return all_data
 
-
 def load_species_data():
     global cached_species_locations
     cached_species_locations = get_all_species_locations()
     print(f"[INIT] Loaded {len(cached_species_locations)} species location records into cache.")
 
-
 def load_species_summary():
     global cached_species_summary
-
     print("[INIT] Calculating species summary...")
 
-    
     threatened_res = supabase.table("threatened_species").select("*").execute()
     threatened_species_data = threatened_res.data
     species_lookup = {s['species_id']: s['name'] for s in threatened_species_data}
 
-
     suburb_res = supabase.table("suburb_locations").select("id, suburb, lat, long").execute()
     suburb_data = suburb_res.data
 
-   
     suburb_coords = {}
     for s in suburb_data:
         name = s.get('suburb')
@@ -69,7 +71,6 @@ def load_species_summary():
             if lat is not None and lon is not None:
                 suburb_coords[name] = {"lat": lat, "long": lon}
 
-    
     def find_nearest_suburb(lat, lon):
         min_distance = float('inf')
         nearest_suburb = None
@@ -77,7 +78,7 @@ def load_species_summary():
             s_lat, s_lon = s.get('lat'), s.get('long')
             if s_lat is None or s_lon is None:
                 continue
-            distance = math.sqrt((lat - s_lat)**2 + (lon - s_lon)**2)
+            distance = math.sqrt((lat - s_lat) ** 2 + (lon - s_lon) ** 2)
             if distance < min_distance:
                 min_distance = distance
                 nearest_suburb = s['suburb']
@@ -95,15 +96,12 @@ def load_species_summary():
         if not suburb or suburb in suburb_seen:
             continue
 
-        
         suburb_records = [
             i for i in cached_species_locations
             if find_nearest_suburb(i.get('lat'), i.get('long')) == suburb
         ]
-
         total_count = len(suburb_records)
 
-       
         species_count = {}
         for rec in suburb_records:
             sid = rec.get('species_id')
@@ -119,7 +117,6 @@ def load_species_summary():
             for sid, count in species_count.items()
         ]
 
-        
         suburb_lat = suburb_coords.get(suburb, {}).get('lat')
         suburb_lon = suburb_coords.get(suburb, {}).get('long')
 
@@ -141,11 +138,10 @@ def load_species_summary():
     print(f"[INIT] Summary ready. Suburbs counted: {len(suburb_results)}")
 
 
-
+# ========== API 路由 ==========
 @app.route('/api/species-summary', methods=['GET'])
 def get_species_summary():
     return jsonify(cached_species_summary)
-
 
 @app.route('/api/species-locations/timeseries', methods=['GET'])
 def get_species_timeseries():
@@ -164,11 +160,6 @@ def get_species_timeseries():
 
     result = [{"year": year, "total": total} for year, total in sorted(year_totals.items())]
     return jsonify(result)
-
-import openai
-import os
-
-openai.api_key = "REMOVED"
 
 @app.route('/api/chat', methods=['POST'])
 def chat():
@@ -192,9 +183,6 @@ def chat():
         print(f"Error communicating with OpenAI: {e}")
         return jsonify({"error": "Failed to get response"}), 500
 
-
-from geopy.distance import geodesic
-
 @app.route('/api/species-filtered-locations', methods=['GET'])
 def get_filtered_species_locations():
     species_id = request.args.get('species_id', type=int)
@@ -204,16 +192,13 @@ def get_filtered_species_locations():
     result_data = []
     species_info = None
 
-    
     threatened_res = supabase.table("threatened_species").select("*").execute()
     threatened_species_list = threatened_res.data
     species_map_full = {s['species_id']: s for s in threatened_species_list}
 
-    
     if species_id:
         species_info = species_map_full.get(species_id)
 
-    # 
     if species_id and not postcode:
         filtered = [item for item in cached_species_locations if item.get('species_id') == species_id]
         result_data = [
@@ -226,13 +211,10 @@ def get_filtered_species_locations():
             for item in filtered
             if item.get("lat") is not None and item.get("long") is not None
         ]
-
- 
     elif postcode and not species_id:
         suburb_res = supabase.table("suburb_locations").select("lat, long").eq("postcode", postcode).limit(1).execute()
         if suburb_res.data:
             origin = (suburb_res.data[0]['lat'], suburb_res.data[0]['long'])
-            print(origin)
             result_data = [
                 {
                     "lat": item.get("lat"),
@@ -244,8 +226,6 @@ def get_filtered_species_locations():
                 if item.get("lat") is not None and item.get("long") is not None and
                    geodesic(origin, (item['lat'], item['long'])).km <= 200
             ]
-
-    
     elif postcode and species_id:
         suburb_res = supabase.table("suburb_locations").select("lat, long").eq("postcode", postcode).limit(1).execute()
         if suburb_res.data:
@@ -272,6 +252,8 @@ def get_filtered_species_locations():
         "result": result_data
     })
 
+
+# ========== 初始化 ==========
 def initialize_server_data():
     load_species_data()
     load_species_summary()
