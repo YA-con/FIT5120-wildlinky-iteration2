@@ -2,5 +2,6 @@ services:
   - type: web
     name: flask-api
     env: python
-    buildCommand: ""
-    startCommand: gunicorn --bind 0.0.0.0:$PORT server.app:app
+    buildCommand: "cd server && pip install -r requirements.txt"
+    startCommand: "gunicorn --bind 0.0.0.0:$PORT app:app"
+    workingDir: server
