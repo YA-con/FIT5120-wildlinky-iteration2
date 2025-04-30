@@ -21,7 +21,7 @@ export const useSpeciesData = (query) => {
         const speciesArr = [1, 2, 3, 4];
         const responses = await Promise.all(
           speciesArr.map((id) => {
-            const url = `http://127.0.0.1:5000/api/species-filtered-locations?postcode=${encodeURIComponent(q.postcode)}&species_id=${id}`;
+            const url = `https://fit5120-t28-wildlinky.onrender.com/api/species-filtered-locations?postcode=${encodeURIComponent(q.postcode)}&species_id=${id}`;
             return fetch(url).then((res) => res.json());
           })
         );
@@ -50,7 +50,7 @@ export const useSpeciesData = (query) => {
     } else {
       const str = `?postcode=${encodeURIComponent(q.postcode)}&species_id=${q.species_id}`;
       try {
-        const res = await fetch(`http://127.0.0.1:5000/api/species-filtered-locations${str}`);
+        const res = await fetch(`https://fit5120-t28-wildlinky.onrender.com/api/species-filtered-locations${str}`);
         const data = await res.json();
         setInfo(data.species_info ? [data.species_info] : []);
         setPoints(data.result || []);
@@ -67,7 +67,7 @@ export const useSpeciesData = (query) => {
     setLoadingCharts(true);
     setError(null);
     try {
-      const res = await fetch(`http://127.0.0.1:5000/api/species-locations/timeseries?species_id=${species_id}`);
+      const res = await fetch(`https://fit5120-t28-wildlinky.onrender.com/api/species-locations/timeseries?species_id=${species_id}`);
       const data = await res.json();
       setCharts(data);
     } catch (err) {
