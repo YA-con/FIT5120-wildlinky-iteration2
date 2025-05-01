@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styles from './TakeAction.module.css';
 import banner from '../assets/take-action.jpg';
 import Quiz from './Quiz';
+import { useNavigate } from 'react-router-dom';
 
 const TakeAction = () => {
   const [openIndex, setOpenIndex] = useState(5);
@@ -10,6 +11,8 @@ const TakeAction = () => {
     setOpenIndex(openIndex === index ? null : index);
   };
 
+  const navigate = useNavigate();
+
   const accordionData = [
     { title: 'Flora and Fauna Guarantee Act 1988 (FFG Act)', 
       content: (
@@ -17,6 +20,9 @@ const TakeAction = () => {
           <p>📄 <strong>What it is about:</strong>  This law protects Victoria’s threatened species and their habitats. It requires the government and public bodies to act in ways that conserve biodiversity.</p>
           <p>🌿 <strong>Why it matters:</strong>  It makes it illegal to harm listed species and lets people challenge harmful developments.</p>
           <p>📄 <strong>Status:</strong> In Effect</p>
+          <p>🔗<strong>Link:</strong> <a href="https://www.legislation.vic.gov.au/in-force/acts/flora-and-fauna-guarantee-act-1988" target="_blank" rel="noopener noreferrer">
+            https://www.legislation.vic.gov.au/in-force/acts/flora-and-fauna-guarantee-act-1988
+          </a></p>
         </div>
       ),
     },
@@ -26,6 +32,9 @@ const TakeAction = () => {
           <p>📄 <strong>What it is about:</strong>  This strategy is Victoria’s long-term plan to improve the health of species and ecosystems by 2037. It sets goals for stopping biodiversity decline and tracking progress with data.</p>
           <p>🌿 <strong>Why it matters:</strong>  It guides investment in habitat protection and shows if policies are actually working.</p>
           <p>📄 <strong>Status:</strong> Progress tracked annually</p>
+          <p>🔗<strong>Link:</strong> <a href="https://www.environment.vic.gov.au/biodiversity/biodiversity-plan" target="_blank" rel="noopener noreferrer">
+            https://www.environment.vic.gov.au/biodiversity/biodiversity-plan
+          </a></p>
         </div>
       ),
     },
@@ -35,6 +44,9 @@ const TakeAction = () => {
           <p>📄 <strong>What it is about:</strong> This act controls how land is used and developed. It requires permits for clearing native vegetation unless exempt.</p>
           <p>🌿 <strong>Why it matters:</strong> Local councils use this law to approve or reject forest-clearing projects.</p>
           <p>📄 <strong>Status:</strong> In Use — Councils apply this daily</p>
+          <p>🔗<strong>Link:</strong> <a href="https://www.planning.vic.gov.au/guides-and-resources/legislation-regulation-and-fees/legislation-and-regulations" target="_blank" rel="noopener noreferrer">
+            https://www.planning.vic.gov.au/guides-and-resources/legislation-regulation-and-fees/legislation-and-regulations
+          </a></p>
         </div>
       ),
     },
@@ -44,6 +56,9 @@ const TakeAction = () => {
           <p>📄 <strong>What it is about:</strong> Victoria has committed to ending all native forest logging on public land by 2024. This plan supports workers transitioning out of the logging industry.</p>
           <p>🌿 <strong>Why it matters:</strong>   It permanently protects millions of trees and reduces emissions from logging.</p>
           <p>📄 <strong>Status:</strong> Logging officially ended Jan 2024</p>
+          <p>🔗<strong>Link:</strong> <a href="https://www.premier.vic.gov.au/protecting-victorias-biodiversity-future-generations" target="_blank" rel="noopener noreferrer">
+            https://www.premier.vic.gov.au/protecting-victorias-biodiversity-future-generations
+          </a></p>
         </div>
       ),
     },
@@ -54,6 +69,9 @@ const TakeAction = () => {
           <p>📄 <strong>What it is about:</strong> Big projects that might harm the environment (like large-scale logging or road development) need an Environment Effects Statement (EES).</p>
           <p>🌿 <strong>Why it matters:</strong>  This gives the public a chance to review and oppose harmful developments.</p>
           <p>📄 <strong>Status:</strong> Required for major proposals</p>
+          <p>🔗<strong>Link:</strong> <a href="https://www.planning.vic.gov.au/environmental-assessments/environmental-assessment-guides/ministerial-guidelines-for-assessment-of-environmental-effects" target="_blank" rel="noopener noreferrer">
+            https://www.planning.vic.gov.au/environmental-assessments/environmental-assessment-guides/ministerial-guidelines-for-assessment-of-environmental-effects
+          </a></p>
         </div>
       ),
     },
@@ -64,6 +82,9 @@ const TakeAction = () => {
           <p>📄 <strong>What it is about:</strong> RFAs are long-term deals between Victoria and the federal government on how forests are used. They balance conservation with industries like timber.</p>
           <p>🌿 <strong>Why it matters:</strong> They've shaped how forests were logged and conserved for decades.</p>
           <p>📄 <strong>Status:</strong> Being reviewed post-logging phase-out</p>
+          <p>🔗<strong>Link:</strong> <a href="https://www.agriculture.gov.au/agriculture-land/forestry/policies/rfa" target="_blank" rel="noopener noreferrer">
+            https://www.agriculture.gov.au/agriculture-land/forestry/policies/rfa
+          </a></p>
         </div>
       ),
     },
@@ -84,8 +105,8 @@ const TakeAction = () => {
         </div>
       </div>
 
-      <section>
-        <h2 className={styles.sectionTitle}>🌿 Why Policies Are the Way to Go</h2>
+      <section className={styles.policySection}>
+        <h2 className={styles.sectionTitle}> Why Policies Are the Way to Go</h2>
         <div className={styles.card}>
           <p>Recycling and reducing waste are great — but they’re not enough to protect forests.</p>
           <p>Policies are the rules that shape what governments, councils, and industries can do. They control how much forest gets cleared, how species are protected, and who’s held accountable.</p>
@@ -94,7 +115,7 @@ const TakeAction = () => {
         </div>
       </section>
 
-      <section>
+      <section className={styles.policySection}>
         <h2 className={styles.sectionTitle}>Things You Can Learn</h2>
         <div className={styles.card}>
           <p> Forest policy doesn’t have to be complicated. Here’s how this section can help you:</p>
@@ -123,7 +144,7 @@ const TakeAction = () => {
           ))}
         </div>
       </section>
-      <section>
+      <section className={styles.policySection}>
         <h2 className={styles.sectionTitle}>Test Your Knowledge</h2>
         <div className={styles.card}>
           {quizStarted ? (
@@ -133,7 +154,9 @@ const TakeAction = () => {
               <p>Ready to check what you’ve learned about forest protection policies? Take a short quiz to reinforce your understanding and get helpful feedback.</p>
               <div className={styles.buttonGroup}>
                 <button className={styles.actionButton} onClick={() => setQuizStarted(true)}>Start Quiz</button>
-                <button className={styles.actionButton}>Raise your voice</button>
+                <button className={styles.actionButton} onClick={() => navigate('/email')}>
+                  Raise your voice
+                </button>
               </div>
             </>
           )}

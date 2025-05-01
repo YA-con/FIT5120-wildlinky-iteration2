@@ -5,7 +5,7 @@ import App from './App';
 import 'antd/dist/reset.css';
 import reportWebVitals from './reportWebVitals';
 
-// 👉 Password protection before React renders
+//  Password protection before React renders
 const url = window.location.href.toLowerCase(); // Case-insensitive check
 const passwordProtected = url.includes('version');
 

@@ -43,6 +43,15 @@
   margin: 0;
 }
 
+.policySection {
+  padding: 80px 20px;
+  background-color: #f5f9f6;
+  border-radius: 24px;
+  margin: 60px auto;
+  max-width: 960px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.05);
+}
+
 .sectionTitle {
   font-size: 22px;
   font-weight: 700;
@@ -54,24 +63,38 @@
 }
 
 .card {
-  border: 1px solid #1b4024;
-  border-radius: 8px;
-  padding: 24px;
-  margin: 0 auto 40px;
-  max-width: 800px;
+  background-color: #fff;
+  border-radius: 16px;
+  padding: 32px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  line-height: 1.8;
   font-size: 16px;
-  line-height: 1.6;
-  background-color: white;
+  color: #222;
 }
 
 .card ul {
   padding-left: 20px;
+  margin-top: 16px;
 }
 
 .card ul li {
-  margin-bottom: 8px;
+  list-style: none;
+  margin-bottom: 12px;
+  position: relative;
+  padding-left: 26px;
+  transition: transform 0.2s ease;
 }
 
+.card ul li:hover {
+  transform: translateX(4px);
+}
+
+.card ul li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.2em;
+}
 .accordionWrapper {
   max-width: 800px;
   margin: 0 auto;
