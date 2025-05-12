@@ -95,28 +95,23 @@ const TakeAction = () => {
       <div className={styles.banner}>
         <div className={styles.bannerOverlay}>
           <h1>
-            Clear Policies. Stronger Voice. <br />
-            Start Advocating for Forests Today.
+            Clear Policies. Stronger Voice.
           </h1>
           <p>
-            Explore Victoria’s forest protection laws in simple terms, test your understanding,
-            and use real policy snippets to support your cause. Start learning here.
+          Under the EPBC Act, anyone can speak up and report activities that may harm Australia’s wildlife and their habitats!
           </p>
         </div>
       </div>
 
       <section className={styles.policySection}>
-        <h2 className={styles.sectionTitle}> Why Policies Are the Way to Go</h2>
+        <h2 className={styles.sectionTitle}>  WHY YOUR VOICE MATTERS ?</h2>
         <div className={styles.card}>
-          <p>Recycling and reducing waste are great — but they’re not enough to protect forests.</p>
-          <p>Policies are the rules that shape what governments, councils, and industries can do. They control how much forest gets cleared, how species are protected, and who’s held accountable.</p>
-          <p>When you understand these policies, you can use them to speak up — and your voice becomes harder to ignore.</p>
-          <p>One strong email, backed by the right policy snippet, can protect more habitat than months of everyday eco-habits.</p>
+          <p>Policies determine how much forest get cleared, species are protected, and who is held accountable. One report, email, or vote could help save the forest.</p>
         </div>
       </section>
 
       <section className={styles.policySection}>
-        <h2 className={styles.sectionTitle}>Things You Can Learn</h2>
+        <h2 className={styles.sectionTitle}>WHAT YOU CAN DO ?</h2>
         <div className={styles.card}>
           <p> Forest policy doesn’t have to be complicated. Here’s how this section can help you:</p>
           <ul>

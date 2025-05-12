@@ -143,6 +143,27 @@
   transform: scale(1.05);
 }
 
+.carouselButtons {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 32px;
+}
+
+.carouselButtons button {
+  background-color: #2e533b;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 12px 28px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.carouselButtons button:hover {
+  background-color: #1d3d2b;
+}
+
 .overlay {
   position: absolute;
   top: 0; left: 0;
@@ -586,4 +607,27 @@ opacity: 1;
   font-size: 18px;
   line-height: 1.6;
   color: #122; 
+}
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4); /* 半透明遮罩 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modalBox {
+  background: white;
+  padding: 32px;
+  border-radius: 12px;
+  max-width: 600px;
+  width: 90%;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  text-align: left;
 }

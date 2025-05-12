@@ -1,0 +1,586 @@
+.wrapper {
+    background-color: #fff;
+    color: #122;
+    font-family: system-ui, Arial, sans-serif;
+    width: 100%;
+    padding: 0;
+  }
+  
+  .banner {
+    background: url('../assets/banner2.png') center/cover no-repeat;
+    height: 70vh;
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+  
+  .bannerOverlay {
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 40px 60px;
+    box-sizing: border-box;
+    color: #fff;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+  }
+  
+  .bannerOverlay h1 {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+  }
+  
+  .bannerOverlay p {
+    font-size: 16px;
+    line-height: 1.6;
+    max-width: 960px;
+  }
+  
+  .introBlock {
+    padding: 80px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  
+  .introBlock .title,
+  .sectionTitle {
+    margin-top: 50px;
+    margin-bottom: 40px; 
+    font-size: 28px;
+    font-weight: bold;
+    line-height: 1.6;
+    text-align: center;
+  }
+  
+  .section {
+    background-color: #f0f7f2;
+    padding: 100px 20px;
+  }
+  
+  .chartRow, .resultsRow {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    margin: 40px 0;
+  }
+  
+  .chartImage {
+    width: 320px;
+    height: auto;
+    border-radius: 6px;
+  }
+  
+  .carouselWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 60px;
+    max-width: 1200px;
+    position: relative;
+    padding: 0 16px;
+  }
+  
+  .carouselViewport {
+    overflow: hidden;
+    flex: 1;
+    max-width: 960px;
+  }
+  
+  .carouselInner {
+    display: flex;
+    transition: transform 0.4s ease-in-out;
+    width: fit-content;
+  }
+  
+  .carouselItem {
+    position: relative;
+    flex: 0 0 33.33%;
+    padding: 0 10px;
+    box-sizing: border-box;
+    overflow: hidden;
+    border-radius: 12px;
+    height: 280px;
+  }
+  
+  .carouselItem img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    border-radius: 12px;
+    transition: transform 0.3s ease;
+  }
+  
+  .carouselItem:hover img {
+    transform: scale(1.05);
+  }
+  
+  .carouselButtons {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 32px;
+    margin-bottom: 80px; 
+  }
+  
+  .carouselButtons button {
+    background-color: #2e533b;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 12px 28px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .carouselButtons button:hover {
+    background-color: #1d3d2b;
+  }
+  
+  .overlay {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.45);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 12px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .carouselItem:hover .overlay {
+    opacity: 1;
+  }
+  
+  .overlay span {
+    color: #fff;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    padding: 0 16px;
+  }
+  
+  .formWrap {
+    border: 2px solid #07431E;
+    width: 400px;
+    height: 56px;
+    border-radius: 28px;
+    margin-right: 32px;
+    background: #fff;
+    padding: 0 16px;
+    font-size: 16px;
+  }
+  
+  .findBox {
+    background: #fff;
+    border-radius: 24px;
+    padding: 48px 32px;
+    max-width: 1200px;
+    margin: 80px auto;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+  }
+  
+  .findBox .title {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 24px;
+    color: #000;
+    text-align: left;
+  }
+  
+  .mapbox {
+    flex: 1;
+    height: 682px;
+    min-width: 400px;
+  }
+  
+  .resultRow {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+  }
+  
+  .controlsRow {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    margin-bottom: 32px;
+    flex-wrap: wrap;
+  }
+  
+  .cardContainer {
+    flex: 0 0 400px;
+  }
+  
+  .card {
+    border: 2px solid #07431E;
+    border-radius: 10px;
+    background: #fff;
+    margin-top: 24px;
+    padding: 24px;
+    overflow-y: auto;
+    line-height: 1.6;
+    max-height: 620px;
+    text-align: left;
+    font-family: system-ui, Arial, sans-serif;
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
+  
+  .card img {
+    display: block;
+    margin: 0 auto 16px;
+    width: 50%;
+    height: auto;
+    object-fit: contain;
+  }
+  
+  .cartTitle {
+    font-size: 26px;
+    font-weight: bold;
+    margin: 16px 0 24px;
+    text-align: center;
+  }
+  
+  .card .f20 {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 20px 0 10px;
+  }
+  
+  .card p,
+  .card ul li {
+    font-size: 16px;
+    margin: 8px 0 16px;
+    line-height: 1.5;
+  }
+  
+  .card ul {
+    padding-left: 20px;
+    margin: 8px 0 16px;
+  }
+  
+  .card a {
+    color: #1f4329;
+    text-decoration: none;
+  }
+  
+  .card a:hover {
+    text-decoration: underline;
+    color: #0f2e18;
+  }
+  
+  .cardBtn {
+    width: 241px;
+    height: 56px;
+    border-radius: 60px;
+    background-color: #07431E;
+    color: #fff;
+    font-size: 28px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 56px;
+    margin: 48px auto 0;
+    cursor: pointer;
+  }
+  .innerCard {
+    margin: 24px 0;
+    padding: 24px;
+    background: #ffffff0c;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+  }
+  
+  .numbersBox {
+    background-color: #fffaf0;
+    border: 1px solid #e0e0e0;
+    border-radius: 24px;
+    padding: 24px 32px;
+    max-width: 800px;
+    margin: 2.5rem auto;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+  }
+  
+  .numbersBox h3 {
+    font-weight: 700;
+    font-size: 1.4rem;
+    color: #1e3b26;
+    margin-bottom: 1rem;
+  }
+  
+  .numbersBox p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: #2e4732;
+    margin: 0;
+  }
+  
+  .highlight {
+    color: #a24028;
+    font-weight: 600;
+  }
+  
+  .speciesStats {
+    position: relative;
+    background-image: url('../assets/koala.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 150px 20px;
+    color: #fff;
+    overflow: hidden;
+    z-index: 0; 
+  }
+  
+  .speciesStats::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5); 
+    z-index: 0;
+  }
+  
+  .flexWrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 120px;
+    flex-wrap: wrap;
+    max-width: 1100px;
+    margin: 0 auto;
+    z-index: 1;
+  }
+  
+  .statColumn {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .statsBoxes {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+  }
+  
+  .statBox {
+    width: 220px;
+    min-height: 120px;
+    padding: 1.2rem;
+    border-radius: 12px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+  }
+  
+  .statBox:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
+  }
+  
+  .statBox strong {
+    font-size: 2.4rem;
+    display: block;
+  }
+  
+  .statBox span {
+    font-size: 1rem;
+    display: block;
+    margin-top: 0.3rem;
+  }
+  
+  .textColumn {
+    max-width: 480px;
+    color: #fff;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+  }
+  
+  .description {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  margin-bottom: 1rem;
+  }
+  
+  .sourceText {
+  font-size: 0.95rem;
+  font-weight: bold;
+  }
+  
+  .extinct {
+  background-color: #a24028;
+  }
+  
+  .critical {
+  background-color: #E69421;
+  }
+  
+  .endangered {
+  background-color: #F9CF39;
+  color: #222;
+  }
+  
+  .highlightRed {
+    color: #a24028;
+    font-weight: 600;
+  }
+  
+  .sourceText {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: #555;
+    margin-top: 0.5rem;
+  }
+  
+  .forestThreats {
+  background-color: #fff;
+  padding: 150px 10px;
+  text-align: center;
+  }
+  
+  .forestThreats h2 {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 36px;
+  }
+  
+  .threatGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  max-width: 1100px;
+  margin: 0 auto;
+  }
+  
+  .threatCard {
+  text-align: left;
+  transition: transform 0.3s ease;
+  }
+  
+  .threatCard:hover {
+  transform: translateY(-6px);
+  }
+  
+  .threatImage {
+  width: 100%;
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+  }
+  
+  .titleBar {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 10px 14px;
+  color: white;
+  text-align: center;
+  }
+  
+  .titleBar h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: bold;
+  }
+  
+  .threatText {
+  margin-top: 10px;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #222;
+  text-align: center;
+  }
+  
+  .threatBox {
+  position: relative;
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  }
+  
+  .overlay {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: rgba(20, 20, 20, 0.5);
+  color: #fff;
+  padding: 16px;
+  transition: height 0.3s ease;
+  height: 48px;
+  overflow: hidden;
+  }
+  
+  .overlay h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: bold;
+  }
+  
+  .overlay p {
+  margin-top: 8px;
+  font-size: 14px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  }
+  
+  .threatBox:hover .overlay {
+  height: 100%;
+  }
+  
+  .threatBox:hover .overlay p {
+  opacity: 1;
+  }
+  
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .fadeIn {
+    animation: fadeInUp 1s ease-out forwards;
+  }
+  
+  @keyframes slideInFromLeft {
+    from {
+      transform: translateX(-120%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  
+  .slideInLeft {
+    animation: slideInFromLeft 0.8s ease-out forwards;
+  }
+  
+  .introTitle {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 40px auto;
+    font-size: 18px;
+    line-height: 1.6;
+    color: #122; 
+  }

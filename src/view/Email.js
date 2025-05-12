@@ -1,5 +1,6 @@
 import styles from './Email.module.css';
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const issueOptions = [
     'Logging',
@@ -155,7 +156,10 @@ const Email = () => {
     const [copied, setCopied] = useState(false);
     const [postcode, setPostcode] = useState('');
     const [council, setCouncil] = useState(null);
-    const allowEdit = selectedIssue !== '';
+    const [invalidPostcode, setInvalidPostcode] = useState(false);
+    const [policyFocus, setPolicyFocus] = useState('');
+    const [emailContent, setEmailContent] = useState('');
+    const navigate = useNavigate();
 
     const handleSelect = (value) => {
         setSelectedIssue(value);
@@ -174,21 +178,20 @@ const Email = () => {
         setCopied(true);
     };
 
-    const handleClear = () => {
-        if (window.confirm('Are you sure to delete template content?')) {
-            setSelectedIssue('');
-            setMessage('');
-            setCopied(false);
-        }
-    };
-
     useEffect(() => {
-        if (postcode.length === 4 && postcodeToCouncil[postcode]) {
+      if (postcode.length === 4) {
+        if (postcodeToCouncil[postcode]) {
           setCouncil(postcodeToCouncil[postcode]);
+          setInvalidPostcode(false);
         } else {
           setCouncil(null);
+          setInvalidPostcode(true);
         }
-      }, [postcode]);
+      } else {
+        setCouncil(null);
+        setInvalidPostcode(false);
+      }
+    }, [postcode]);
     
     return (
         <main className={styles.contailer}>
@@ -204,68 +207,79 @@ const Email = () => {
             </div>
 
             <div className={styles.container}>
-                <div className={styles.postcodeSection}>
-                    <h2 className={styles.headerTitle}>Find Your Local Council</h2>
-                    <h2 className={styles.subTitle}>Input Your Postcode:</h2>
-                    <input
-                        type="text"
-                        className={styles.postcodeInput}
-                        placeholder="Enter your postcode"
-                        value={postcode}
-                        onChange={(e) => setPostcode(e.target.value)}
-                    />
-                    {council && (
-                        <div className={styles.councilInfoBox}>
-                        <h3>{council.name}</h3>
-                        <p><strong>Email:</strong> {council.email}</p>
-                        <p><strong>Phone:</strong> {council.phone}</p>
-                        <p>
-                            <strong>Website:</strong>{' '}
-                            <a href={council.website} target="_blank" rel="noopener noreferrer">
-                            {council.website}
-                            </a>
-                        </p>
-                        </div>
-                    )}
+              <div className={styles.postcodeSection}>
+                  <h2 className={styles.headerTitle}>Find Your Local Council</h2>
+                  <h2 className={styles.subTitle}>Input Your Postcode:</h2>
+                  <input
+                    type="text"
+                    className={styles.postcodeInput}
+                    placeholder="Enter your postcode"
+                    value={postcode}
+                    onChange={(e) => setPostcode(e.target.value)}
+                  />
+
+                  {/* Show council info if found */}
+                  {council && (
+                    <div className={styles.councilInfoBox}>
+                      <h3>{council.name}</h3>
+                      <p><strong>Email:</strong> {council.email}</p>
+                      <p><strong>Phone:</strong> {council.phone}</p>
+                      <p>
+                        <strong>Website:</strong>{' '}
+                        <a href={council.website} target="_blank" rel="noopener noreferrer">
+                          {council.website}
+                        </a>
+                      </p>
+                    </div>
+                  )}
+
+                  {/* Show error message if postcode invalid */}
+                  {invalidPostcode && (
+                    <p className={styles.invalidMsg}>
+                      This is not a valid postcode. Please enter a valid Victorian postcode.
+                    </p>
+                  )}
                 </div>
 
-                <h1 className={styles.headerTitle}>Draft Your Advocacy Email</h1>
-                <section className={styles.flexLayout}>
-                    <div className={styles.left}>
-                        <h2 className={styles.subTitle}>Select an Issue:</h2>
-                        <select
-                            className={styles.selectBox}
-                            value={selectedIssue}
-                            onChange={(e) => handleSelect(e.target.value)}
-                        >
-                            <option value="">Select an issue</option>
-                            {issueOptions.map(opt => (
-                                <option key={opt} value={opt}>{opt}</option>
-                            ))}
-                        </select>
+              <h1 className={styles.headerTitle}>Draft Your Advocacy Email</h1>
 
-                        {!allowEdit && (
-                            <p className={styles.note}>Please choose an issue to begin drafting your message.</p>
-                        )}
-                        <textarea
-                            className={styles.textarea}
-                            value={message}
-                            onChange={(e) => setMessage(e.target.value)}
-                            disabled={!allowEdit}
-                        />
-                        <button className={styles.clearBtn} onClick={handleClear}>
-                            Clear template
-                        </button>
-                    </div>
+              <section className={styles.formLayout}>
+                  <label className={styles.subTitle}>Select an Issue:</label>
+                  <select
+                      className={styles.selectBox}
+                      value={selectedIssue}
+                      onChange={(e) => setSelectedIssue(e.target.value)}
+                  >
+                      <option value="">Select an issue</option>
+                      {issueOptions.map(opt => (
+                          <option key={opt} value={opt}>{opt}</option>
+                      ))}
+                  </select>
 
-                    <div className={styles.right}>
-                        <h2 className={styles.subTitle}>Live Preview</h2>
-                        <div className={styles.previewBox}>{message}</div>
-                        <button className={styles.copyBtn} onClick={handleCopy}>
-                            {copied ? 'Copied!' : 'Copy to Clipboard'}
-                        </button>
-                    </div>
-                </section>
+                  <label className={styles.subTitle}>Is there specific issue or policies you want to focus on?</label>
+                  <textarea
+                      className={styles.textarea}
+                      value={policyFocus}
+                      onChange={(e) => setPolicyFocus(e.target.value)}
+                      placeholder="Type your policy focus here..."
+                  />
+
+                  <label className={styles.subTitle}>Here your email:</label>
+                  <textarea
+                      className={styles.textarea}
+                      value={emailContent}
+                      onChange={(e) => setEmailContent(e.target.value)}
+                      placeholder="Type your email content here..."
+                  />
+
+                  <button className={styles.copyBtn} onClick={handleCopy}>
+                    {copied ? 'Copied!' : 'Copy to Clipboard'}
+                  </button>
+
+                  <button className={styles.moreBtn} onClick={() => navigate('/take-action')}>
+                    More action
+                  </button>
+              </section>
             </div>
         </main>
     );

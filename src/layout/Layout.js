@@ -4,6 +4,7 @@ import Headers from '../components/Headers'
 import Home from '../view/Home'
 import Email from '../view/Email'
 import ExploreSpecies from '../view/ExploreSpecies'
+import SpeciesLocation from '../view/SpeciesLocation'
 import TakeAction from '../view/TakeAction'
 import Wireframe from '../view/Wireframe'
 
@@ -15,6 +16,7 @@ const Layout = () => {
                 <Route index element={<Home />} />
                 <Route path="email" element={<Email />} />
                 <Route path="explore-species" element={<ExploreSpecies />} />
+                <Route path="species-location" element={<SpeciesLocation />} />
                 <Route path="take-action" element={<TakeAction />} />
                 <Route path="wireframe" element={<Wireframe />} />
             </Routes>
