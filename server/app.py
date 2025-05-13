@@ -3,7 +3,7 @@ from flask_cors import CORS
 from supabase import create_client
 from dotenv import load_dotenv
 from geopy.distance import geodesic
-import openai
+# import openai
 import os
 import math
 
@@ -261,54 +261,113 @@ ALLOWED_POLICY_TERMS = {
     "clearing", "carbon", "habitat", "policy", "council", "land", "climate", "development"
 }
 
+# @app.route('/api/generate-email', methods=['POST'])
+# def generate_email():
+#     GEMINI_API_KEY = os.getenv('GEMINI_API_KEY')
+
+#     data = request.json
+#     issue = data.get('issue', '')
+#     focus = data.get('focus', '')  
+
+#     #focus = data.get('focus', '')
+#     focus = focus.strip().lower()
+
+#     print(f"Received issue: {issue}")
+#     print(f"Received focus: [{focus}]")
+
+#     if focus and not any(term in focus for term in ALLOWED_POLICY_TERMS):
+#         return jsonify({"error": "Focus text must relate to valid policy or environmental terms."}), 400
+
+
+#     # focus = focus.strip().lower()
+#     # if focus and not any(term in focus for term in ALLOWED_POLICY_TERMS):
+#     #     return jsonify({"error": "Focus text must relate to valid policy or environmental terms."}), 400
+
+
+#     if not GEMINI_API_KEY:
+#         return jsonify({"error": "Missing Gemini API key"}), 500
+#     if not issue:
+#         return jsonify({"error": "Missing issue"}), 400
+
+#     headers = {
+#         "Content-Type": "application/json"
+#     }
+
+#     # Dynamic prompt generation
+#     prompt = (
+#         f"Your task is to write a passionate and persuasive conservation advocacy email "
+#         f"focused on the issue of {issue.lower()} in Victoria, Australia. "
+#     )
+
+#     if focus:
+#         prompt += f"Please pay special attention to the specific policy or focus area: {focus}.\n"
+
+#     prompt += (
+#         "The email should be structured as follows:\n\n"
+#         "1. **Subject Line:** Create a subject line that immediately grabs attention and clearly states the urgency of the matter.\n"
+#         "2. **Introduction (Address):** Politely address the email to 'Dear Council Members' to convey respect and professionalism.\n"
+#         "3. **Issue Presentation:** Clearly outline the issue, emphasizing its detrimental effects on the environment and biodiversity within Victoria. Include factual evidence.\n"
+#         "4. **Solution Motivation:** Encourage the council to act by proposing actionable solutions, such as stricter regulations or partnerships with environmental organisations.\n"
+#         "5. **Conclusion:** Politely but firmly urge the council to take decisive action.\n\n"
+#         "Guidelines:\n"
+#         "- Use Australian English.\n"
+#         "- Keep the tone professional, firm, and accessible.\n"
+#         "- Limit to 200 words.\n"
+#     )
+
+#     payload = {
+#         "contents": [{"parts": [{"text": prompt}]}]
+#     }
+
+#     try:
+#         response = requests.post(
+#             "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=GEMINI_API_KEY",
+#             headers=headers,
+#             params={"key": GEMINI_API_KEY},
+#             json=payload
+#         )
+
+#         if response.status_code == 200:
+#             result = response.json()
+#             generated_text = result['candidates'][0]['content']['parts'][0]['text']
+#             return jsonify({"email": generated_text})
+#         else:
+#             return jsonify({"error": "Gemini API Error", "details": response.text}), response.status_code
+
+#     except Exception as e:
+#         print(" Exception:", str(e))
+#         return jsonify({"error": "Internal Server Error"}), 500
+
 @app.route('/api/generate-email', methods=['POST'])
 def generate_email():
     GEMINI_API_KEY = os.getenv('GEMINI_API_KEY')
-
     data = request.json
-    issue = data.get('issue', '')
-    focus = data.get('focus', '')  
 
-    print("Received issue:", issue)
-    print("Received focus:", focus)
+    issue = data.get('issue', '').strip()
+    focus = data.get('focus', '').strip().lower()
 
-    if focus and not any(term in focus for term in ALLOWED_POLICY_TERMS):
-        return jsonify({"error": "Focus text must relate to valid policy or environmental terms."}), 400
+    print(f"Received issue: [{issue}]")
+    print(f"Received focus: [{focus}]")
 
-    if not GEMINI_API_KEY:
-        return jsonify({"error": "Missing Gemini API key"}), 500
     if not issue:
         return jsonify({"error": "Missing issue"}), 400
 
-    headers = {
-        "Content-Type": "application/json"
-    }
+    # ✅ Only validate if actual focus content is present
+    if focus and not any(term in focus for term in ALLOWED_POLICY_TERMS):
+        return jsonify({"error": "Focus text must relate to valid policy or environmental terms."}), 400
 
-    # Dynamic prompt generation
     prompt = (
-        f"Your task is to write a passionate and persuasive conservation advocacy email "
-        f"focused on the issue of {issue.lower()} in Victoria, Australia. "
-    )
-
-    if focus:
-        prompt += f"Please pay special attention to the specific policy or focus area: {focus}.\n"
-
-    prompt += (
-        "The email should be structured as follows:\n\n"
-        "1. **Subject Line:** Create a subject line that immediately grabs attention and clearly states the urgency of the matter.\n"
-        "2. **Introduction (Address):** Politely address the email to 'Dear Council Members' to convey respect and professionalism.\n"
-        "3. **Issue Presentation:** Clearly outline the issue, emphasizing its detrimental effects on the environment and biodiversity within Victoria. Include factual evidence.\n"
-        "4. **Solution Motivation:** Encourage the council to act by proposing actionable solutions, such as stricter regulations or partnerships with environmental organisations.\n"
-        "5. **Conclusion:** Politely but firmly urge the council to take decisive action.\n\n"
-        "Guidelines:\n"
-        "- Use Australian English.\n"
-        "- Keep the tone professional, firm, and accessible.\n"
-        "- Limit to 200 words.\n"
+        f"Write a persuasive advocacy email focused on {issue} in Victoria, Australia.\n"
+        f"{'Focus particularly on: ' + focus + '.' if focus else ''}\n"
+        "Use Australian English. Be firm, professional, and accessible. Max 200 words. "
+        "Close with: 'Sincerely, A concerned Victorian resident'."
     )
 
     payload = {
         "contents": [{"parts": [{"text": prompt}]}]
     }
+
+    headers = {"Content-Type": "application/json"}
 
     try:
         response = requests.post(
@@ -320,14 +379,15 @@ def generate_email():
 
         if response.status_code == 200:
             result = response.json()
-            generated_text = result['candidates'][0]['content']['parts'][0]['text']
-            return jsonify({"email": generated_text})
+            email_text = result['candidates'][0]['content']['parts'][0]['text']
+            return jsonify({"email": email_text})
         else:
+            print("Gemini API error:", response.text)
             return jsonify({"error": "Gemini API Error", "details": response.text}), response.status_code
 
     except Exception as e:
-        print(" Exception:", str(e))
-        return jsonify({"error": "Internal Server Error"}), 500
+        print("Gemini Exception:", str(e))
+        return jsonify({"error": f"Internal Server Error: {str(e)}"}), 500
 
 
 def initialize_server_data():
