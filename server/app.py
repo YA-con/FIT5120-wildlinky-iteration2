@@ -261,6 +261,7 @@ ALLOWED_POLICY_TERMS = {
     "clearing", "carbon", "habitat", "policy", "council", "land", "climate", "development"
 }
 
+
 # @app.route('/api/generate-email', methods=['POST'])
 # def generate_email():
 #     GEMINI_API_KEY = os.getenv('GEMINI_API_KEY')
@@ -352,9 +353,11 @@ def generate_email():
     if not issue:
         return jsonify({"error": "Missing issue"}), 400
 
-    # ✅ Only validate if actual focus content is present
+    # Only validate if actual focus content is present
     if focus and not any(term in focus for term in ALLOWED_POLICY_TERMS):
         return jsonify({"error": "Focus text must relate to valid policy or environmental terms."}), 400
+    
+
 
     prompt = (
         f"Write a persuasive advocacy email focused on {issue} in Victoria, Australia.\n"
