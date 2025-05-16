@@ -7,7 +7,10 @@ const issueOptions = [
     'Bushfires',
     'Land Clearing',
     'Urban Expansion',
-    'Agricultural Expansion'
+    'Agricultural Expansion',
+    'Report logging',
+    'Report land clearing'
+
 ];
 
 const Email = () => {
@@ -106,7 +109,7 @@ const Email = () => {
         setLoading(true);
         setCopied(false);
         try {
-            const res = await fetch('http://localhost:5001/api/generate-email', {
+            const res = await fetch('http://localhost:5000/api/generate-email', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ issue, focus: focusText })

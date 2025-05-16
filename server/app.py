@@ -357,7 +357,13 @@ def generate_email():
     if focus and not any(term in focus for term in ALLOWED_POLICY_TERMS):
         return jsonify({"error": "Focus text must relate to valid policy or environmental terms."}), 400
     
-
+    # check if ssue has report, do a different prompt(without the focus)
+    if "report" in issue.lower():
+        prompt = (
+            f"Write a persuasive advocacy email focused on {issue} in Victoria, Australia.\n"
+            "Use Australian English. Be firm, professional, and accessible. Max 200 words. "
+            "Close with: 'Sincerely, A concerned Victorian resident'."
+        )
 
     prompt = (
         f"Write a persuasive advocacy email focused on {issue} in Victoria, Australia.\n"
