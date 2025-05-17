@@ -10,9 +10,19 @@
   overflow: hidden;
 }
 
+.videoBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
 .heroOverlay {
-  background-color: rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(4px);
+  background-color: rgba(0, 0, 0, 0.05);
+  backdrop-filter: blur(0px);
   color: white;
   padding: 48px 32px;
   text-align: center;
@@ -41,7 +51,7 @@
 
 .downArrow {
   font-size: 40px;
-  color: #F4CF4E;
+  color: #f6c948;
   cursor: pointer;
   position: absolute;
   left: 50%;
@@ -66,12 +76,15 @@
 }
 
 .section {
-  min-height: 100vh;
-  padding: 80px 32px;
+  height: 85vh;
+  display: flex;
+  align-items: center; 
+  justify-content: center;
+  padding: 0 32px;
+  position: relative;
   opacity: 0;
   transform: translateY(40px);
   transition: all 0.8s ease;
-  position: relative;
 }
 
 .visible {
@@ -83,10 +96,6 @@
   background-color: #F3F7F2;
 }
 
-.whiteSection {
-  background-color: #ffffff;
-}
-
 .sectionContent {
   max-width: 1440px;
   margin: 0 auto;
@@ -96,6 +105,7 @@
   flex-wrap: wrap;
   align-items: center;
   gap: 40px;
+  padding: 0 clamp(24px, 5vw, 96px);
 }
 
 .sectionText {
@@ -145,7 +155,7 @@
   width: 100%;
   height: 300px;
   object-fit: cover;
-  border-radius: 8px;
+  border-radius: 0;
 }
 
 .sectionImgLeft,
@@ -154,7 +164,7 @@
   height: auto;
   max-width: 500px;
   object-fit: cover;
-  border-radius: 8px;
+  border-radius: 0;
 }
 
 .sectionImgLeft {
@@ -173,6 +183,99 @@
   opacity: 1;
 }
 
-.sectionNumber {
-  display: none;
+.successBanner {
+  position: relative;
+  background-image: url('../assets/one-world.jpg'); 
+  background-size: cover;
+  background-position: center;
+  height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
+
+.successOverlay {
+  background-color: rgba(0, 0, 0, 0.25);
+  padding: 60px 20px;
+  width: 100%;
+  height: 100%;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.bannerTitle {
+  font-size: 40px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.bannerText {
+  font-size: 18px;
+  max-width: 700px;
+  margin-bottom: 32px;
+  line-height: 1.6;
+}
+
+.bannerButtons button {
+  background-color: #2e533b;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 12px 28px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.bannerButtons button:hover {
+  background-color: #1d3d2b;
+}
+
+.chartSection {
+  background-color: #f5fdf7;
+  padding: 80px 64px;
+  text-align: center;
+  opacity: 1;                
+  transform: none;
+}
+
+.sectionTitle {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 40px;
+}
+
+.sectionIntro {
+  font-size: 18px;
+  color: #222;
+  margin: 24px auto 40px auto; 
+  max-width: 900px;
+  text-align: center;
+  line-height: 1.6;
+}
+
+.carouselButtons {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 32px;
+}
+
+.carouselButtons button {
+  background-color: #2e533b;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 12px 28px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.carouselButtons button:hover {
+  background-color: #1d3d2b;
+}
+
+

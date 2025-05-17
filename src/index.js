@@ -6,7 +6,7 @@ import 'antd/dist/reset.css';
 import reportWebVitals from './reportWebVitals';
 
 const PASSWORD_KEY = 'wildlinky_access';
-const PASSWORD_TIMEOUT = 30 * 60 * 1000; // 30 分钟（毫秒）
+const PASSWORD_TIMEOUT = 30 * 60 * 1000; 
 
 const correctPassword = 'wildlinky5120';
 const storedData = JSON.parse(localStorage.getItem(PASSWORD_KEY));
@@ -27,7 +27,6 @@ if (!isPasswordValid) {
     }
   }
 
-  // 保存密码通过状态和当前时间戳
   localStorage.setItem(PASSWORD_KEY, JSON.stringify({ timestamp: now }));
 }
 

@@ -11,8 +11,7 @@ import math
 load_dotenv()
 
 app = Flask(__name__)
-CORS(app)
-
+CORS(app, origins="*")
 
 url = os.getenv("SUPABASE_URL")
 key = os.getenv("SUPABASE_KEY")
@@ -253,6 +252,89 @@ def get_filtered_species_locations():
         "result": result_data
     })
 
+@app.route('/api/council', methods=['GET'])
+def get_council_by_postcode():
+    postcode = request.args.get('postcode', '').strip()
+    print(f"[DEBUG] Received postcode: '{postcode}'")
+
+    if not postcode:
+        return jsonify({'error': 'Missing postcode'}), 400
+
+    try:
+        response = supabase \
+            .table("vic_council_details") \
+            .select("council_name, email, tel_phone, website, address") \
+            .eq("postcode", postcode) \
+            .limit(1) \
+            .execute()
+
+        print(f"[DEBUG] DB response: {response.data}")
+
+        if response.data and len(response.data) > 0:
+            council = response.data[0]
+            return jsonify({
+                "name": council["council_name"],
+                "email": council["email"],
+                "phone": council["tel_phone"],
+                "website": council["website"],
+                "address": council["address"]
+            })
+        else:
+            return jsonify({}), 404
+    except Exception as e:
+        print(f"Error fetching council by postcode: {e}")
+        return jsonify({'error': 'Internal server error'}), 500
+
+
+
+@app.route('/api/generate-email', methods=['POST'])
+def generate_email():
+
+    data = request.get_json()
+    issue = data.get('issue', '')
+    focus = data.get('focus', '')
+    modifiers = data.get('modifiers', {})
+
+    if not issue:
+        return jsonify({'error': 'Missing issue'}), 400
+
+    mod_text = ', '.join([f"{k}: {v}" for k, v in modifiers.items()]) or 'None'
+    prompt = f"""
+    You are writing an advocacy email to a local Victorian council. Follow the user's inputs and preferences strictly.
+
+    ISSUE:
+    "{issue}"
+
+    USER'S SPECIFIC CONCERN (if provided):
+    "{focus or 'No specific concern provided.'}"
+
+    PREFERRED EMAIL STYLE:
+    - Length: {modifiers.get('Length', 'Auto')}
+    - Style: {modifiers.get('Style', 'Auto')}
+    - Tone: {modifiers.get('Tone', 'Auto')}
+    - Mood: {modifiers.get('Mood', 'Auto')}
+
+    Please write a respectful, persuasive, and impactful advocacy email starting with:
+    "Dear Council,"
+
+    And ending with:
+    "Sincerely, A concerned Victorian resident"
+
+    Make sure the message reflects the issue, user concern (if any), and style preferences.
+    """
+
+    try:
+        response = openai.ChatCompletion.create(
+            model="gpt-3.5-turbo",
+            messages=[{"role": "user", "content": prompt}],
+            temperature=0.7,
+            max_tokens=500
+        )
+        reply = response['choices'][0]['message']['content'].strip()
+        return jsonify({'email': reply})
+    except Exception as e:
+        print(f"Error generating email: {e}")
+        return jsonify({'error': 'Failed to generate email'}), 500
 
 
 def initialize_server_data():
@@ -262,4 +344,4 @@ def initialize_server_data():
 initialize_server_data()
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+    app.run(host='127.0.0.1', port=5000)
