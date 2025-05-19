@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { HashRouter, Routes, Route } from 'react-router-dom'
 import Headers from '../components/Headers'
 import Home from '../view/Home'
 import Email from '../view/Email'
@@ -12,7 +12,7 @@ import Footer from '../components/Footer'
 
 const Layout = () => {
     return (
-        <BrowserRouter>
+        <HashRouter>
             <ScrollToTop />
             <Headers />
             <Routes>
@@ -24,7 +24,7 @@ const Layout = () => {
                 <Route path="wireframe" element={<Wireframe />} />
             </Routes>
             <Footer />
-        </BrowserRouter>
+        </HashRouter>
     )
 }
 
