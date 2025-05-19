@@ -60,18 +60,12 @@ const Home = () => {
       <section className={`${styles.section} ${styles.greenSection}`} id="section1">
         <div className={styles.sectionContent}>
           <div className={styles.sectionText}>
-            <h2>01</h2>
+            <h2 className={styles.sectionNumber}>01</h2>
             <h2>What’s Happening to Our Forests?</h2>
             <p><strong>14%</strong> of Victoria’s native forest cover has been lost since 2000</p>
             <p>Over <strong>500 species</strong> in Victoria are listed as threatened or endangered.</p>
             <p><strong>2%</strong> of land holds over <strong>75%</strong> of biodiversity in some regions.</p>
-            <button
-                className="fancyButton"
-                style={{ '--btn-color': '#2e533b' }}
-                onClick={() => navigate('/forest-habitat')}
-              >
-              Discover more
-            </button>
+            <button onClick={() => navigate('/forest-habitat')}>Discover policies</button>
           </div>
           <div className={styles.sectionImagesGrid}>
             <img src={animal1} alt="Species 1" />
@@ -87,7 +81,7 @@ const Home = () => {
         <div className={styles.sectionContent}>
           <img src={policyImg} alt="Policy visual" className={styles.sectionImgLeft} />
           <div className={styles.sectionText}>
-            <h2>02</h2>
+            <h2 className={styles.sectionNumber}>02</h2>
             <h2>Policies protect nature</h2>
             <p>
               <strong>The Flora and Fauna Guarantee Act 1988</strong> has helped protect over <strong>700 threatened species</strong>, and led to successful recovery programs. One of its major wins?
@@ -102,7 +96,7 @@ const Home = () => {
       <section className={`${styles.section} ${styles.greenSection}`} id="section3">
         <div className={styles.sectionContent}>
           <div className={styles.sectionText}>
-            <h2>03</h2>
+            <h2 className={styles.sectionNumber}>03</h2>
             <h2>Speak Up with Confidence</h2>
             <p>
               Use our ready-to-go email tool to raise your voice.
@@ -122,7 +116,7 @@ const Home = () => {
             These real victories prove that your voice and actions matter — together, we can protect our forests.
           </p>
           <div className={styles.bannerButtons}>
-            <button onClick={() => navigate('/policy')}>Discover more</button>
+            <button onClick={() => navigate('/your-way')}>Discover more</button>
           </div>
         </div>
       </section>

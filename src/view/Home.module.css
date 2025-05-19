@@ -53,9 +53,9 @@
   font-size: 40px;
   color: #f6c948;
   cursor: pointer;
+  bottom: 16px;
   position: absolute;
   left: 50%;
-  bottom: 10%;
   transform: translateX(-50%);
   z-index: 10;
   animation: bounce 1.5s infinite ease-in-out;
@@ -278,4 +278,123 @@
   background-color: #1d3d2b;
 }
 
+.sectionText .sectionNumber {
+  color: #9E2B1A;
+  font-size: 60px;
+  font-weight: 800;
+  margin-bottom: 12px;
+  line-height: 1;
+}
 
+@media (max-width: 900px) {
+  .section {
+    height: auto;
+    padding: 48px 24px;
+  }
+
+  .sectionContent {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 0 24px;
+  }
+
+  .sectionText {
+    width: 100%;
+    max-width: 600px;
+  }
+
+  .sectionText h2 {
+    font-size: 32px;
+  }
+
+  .sectionText .sectionNumber {
+    font-size: 44px;
+    margin-bottom: 12px;
+  }
+
+  .sectionText p {
+    font-size: 16px;
+  }
+
+  .sectionImagesGrid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    width: 100%;
+    max-width: 500px;
+    margin-top: 24px;
+  }
+
+  .sectionImagesGrid img {
+    height: auto;
+    aspect-ratio: 4 / 3;
+  }
+
+  .sectionImgLeft,
+  .sectionImgRight {
+    max-width: 100%;
+    width: 100%;
+    transform: none !important;
+    margin-top: 24px;
+  }
+
+  .heroOverlay h1 {
+    font-size: 32px;
+  }
+
+  .heroOverlay p {
+    font-size: 16px;
+    padding: 0 12px;
+  }
+
+  .bannerTitle {
+    font-size: 28px;
+  }
+
+  .bannerText {
+    font-size: 16px;
+    padding: 0 16px;
+  }
+
+  .carouselButtons {
+    flex-direction: column;
+    gap: 12px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .section {
+    height: auto; 
+    padding: 48px 24px;
+  }
+
+  .sectionContent {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .sectionText {
+    width: 100%;
+    max-width: 700px;
+  }
+
+  .sectionImagesGrid {
+    width: 100%;
+    max-width: 600px;
+    margin-top: 24px;
+  }
+
+  .sectionImagesGrid img {
+    height: auto;
+    aspect-ratio: 4 / 3;
+  }
+
+  .sectionImgLeft,
+  .sectionImgRight {
+    max-width: 100%;
+    width: 100%;
+    transform: none !important;
+    margin-top: 24px;
+  }
+}

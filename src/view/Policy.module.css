@@ -48,7 +48,7 @@
 .policySection {
   padding: 40px 20px;
   background-color: #e6efe7;
-  border-radius: 24px;
+  border-radius: 6px;
   margin: 60px auto;
   max-width: 960px;
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.05);
@@ -70,10 +70,8 @@
 }
 
 .card {
-  background-color: #fff;
-  border-radius: 16px;
+  background-color: #e6efe7;
   padding: 32px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   line-height: 1.8;
   font-size: 16px;
   color: #222;
@@ -167,8 +165,8 @@
 }
 
 .yellowButton {
-  background-color: #ffd938;
-  color: #1d3d2b;
+  background-color: #F4CF4E;
+  color: #000000;
   border: none;
   border-radius: 12px;
   font-weight: bold;

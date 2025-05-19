@@ -134,22 +134,28 @@ const ForestHabitat = () => {
         </div>
       </div>
 
-      <div className={styles.forestThreats}>
-        <h2>What’s Breaking Our Forests</h2>
-        <div className={styles.threatGrid}>
-          {threats.map((t, i) => (
-            <div key={i} className={styles.threatCard}>
-              <div className={styles.threatImage} style={{ backgroundImage: `url(${t.image})` }}>
-                <div className={styles.titleBar}><h3>{t.title}</h3></div>
+ 
+        <div className={styles.forestThreats}>
+          <h2>What’s Breaking Our Forests</h2>
+          <div className={styles.threatGrid}>
+            {threats.map((t, i) => (
+              <div key={i} className={styles.threatCard}>
+                <div className={styles.threatImage} style={{ backgroundImage: `url(${t.image})` }}>
+                  <div className={styles.titleBar}><h3>{t.title}</h3></div>
+                </div>
+                <p className={styles.threatText}>{t.desc}</p>
               </div>
-              <p className={styles.threatText}>{t.desc}</p>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-      </div>
 
       <div className={styles.section}>
         <div className={styles.sectionTitle}>Forest Ecology in Victoria</div>
+        <p className={styles.sectionIntro}>
+          To support Victoria’s Biodiversity 2037 goals, the state’s forest policies prioritize the protection
+          of native forest types that hold high biodiversity value. Below are some of the key forest ecosystems
+          and their characteristics.
+        </p>
         <div className={styles.carouselWrapper}>
           <button className={styles.arrowLeft} onClick={handlePrev}><ChevronLeft size={32} /></button>
           <div className={styles.carouselViewport}>
