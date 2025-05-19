@@ -9,6 +9,7 @@ import Policy from '../view/Policy'
 import Wireframe from '../view/Wireframe'
 import ScrollToTop from '../components/ScrollToTop'
 import Footer from '../components/Footer'
+import YourWay from '../view/YourWay';
 
 const Layout = () => {
     return (
@@ -22,6 +23,7 @@ const Layout = () => {
                 <Route path="explore-species" element={<ExploreSpecies />} />
                 <Route path="policy" element={<Policy />} />
                 <Route path="wireframe" element={<Wireframe />} />
+                <Route path="/your-way" element={<YourWay />} />
             </Routes>
             <Footer />
         </HashRouter>

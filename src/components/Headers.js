@@ -54,6 +54,7 @@ const Headers = () => {
       title: 'Take action',
       items: [
         { to: '/email', label: 'Write an email' },
+        { to: '/your-way', label: 'Do it your way' },
       ]
     }
   ]
