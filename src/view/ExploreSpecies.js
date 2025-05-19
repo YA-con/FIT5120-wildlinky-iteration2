@@ -124,7 +124,7 @@ const ExploreSpecies = () => {
                 </div>
               ))
             ) : (
-              <p>No data available.</p>
+              <p></p>
             )}
           </div>
           <section className={styles.mapbox}>
