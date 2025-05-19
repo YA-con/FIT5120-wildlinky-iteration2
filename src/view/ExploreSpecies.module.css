@@ -1,0 +1,244 @@
+.wrapper {
+  background-color: #fff;
+  color: #122;
+  font-family: system-ui, Arial, sans-serif;
+  width: 100%;
+  padding: 0;
+}
+
+.sectionTitle {
+  font-size: 28px;
+  font-weight: bold;
+  margin-top: 50px;
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.introTitle {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 40px auto;
+  font-size: 18px;
+  line-height: 1.6;
+  color: #122;
+}
+
+.findBox {
+  background: #fff;
+  border-radius: 24px;
+  padding: 48px 32px;
+  max-width: 1200px;
+  margin: 80px auto;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+}
+
+.resultsRow {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.mapbox {
+  width: 100%;
+  height: auto;
+  min-height: 800px;
+}
+
+.cardContainer {
+  margin-top: -270px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  width: 100%;
+}
+
+.card {
+  border: 2px solid #07431E;
+  border-radius: 10px;
+  background: #fff;
+  padding: 16px;
+  max-height: 620px;
+  overflow-y: auto;
+  font-size: 14px;
+  line-height: 1.6;
+  text-align: left;
+}
+
+.innerCard {
+  padding: 16px;
+  background: #ffffff0c;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card img {
+  display: block;
+  margin: 0 auto 16px;
+  width: 60%;
+  height: auto;
+  object-fit: contain;
+}
+
+.cartTitle {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 12px 0 16px;
+  text-align: center;
+}
+
+.card .f20 {
+  font-size: 15px;
+  font-weight: bold;
+  margin: 12px 0 8px;
+}
+
+.card p,
+.card ul li {
+  font-size: 14px;
+  margin: 6px 0 12px;
+  line-height: 1.4;
+}
+
+.card ul {
+  padding-left: 20px;
+  margin: 8px 0 16px;
+}
+
+.card a {
+  color: #1f4329;
+  text-decoration: none;
+}
+
+.card a:hover {
+  text-decoration: underline;
+  color: #0f2e18;
+}
+
+@media (max-width: 1024px) {
+  .cardContainer {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .cardContainer {
+    grid-template-columns: 1fr;
+  }
+}
+
+.speciesStats {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 150px 20px;
+  color: #fff;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.speciesStats::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 0;
+}
+
+.flexWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 120px;
+  flex-wrap: wrap;
+  max-width: 1100px;
+  margin: 0 auto;
+  z-index: 1;
+}
+
+.statColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.statBox {
+  width: 220px;
+  min-height: 120px;
+  padding: 1.2rem;
+  border-radius: 12px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+  background-color: #f0f0f0;
+}
+
+.statBox:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
+}
+
+.statBox strong {
+  font-size: 2.4rem;
+  display: block;
+}
+
+.statBox span {
+  font-size: 1rem;
+  display: block;
+  margin-top: 0.3rem;
+}
+
+.textColumn {
+  max-width: 480px;
+  color: #fff;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+}
+
+.description {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+
+.highlightRed {
+  color: #a24028;
+  font-weight: 600;
+}
+
+.extinct {
+  background-color: #a24028;
+  color: white;
+}
+
+.critical {
+  background-color: #e69421;
+  color: white;
+}
+
+.endangered {
+  background-color: #f9cf39;
+  color: #222;
+}
+
+.carouselButtons {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 32px;
+  margin-bottom: 80px;
+}
+
+.carouselButtons button {
+  background-color: #2e533b;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 12px 28px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.carouselButtons button:hover {
+  background-color: #1d3d2b;
+}

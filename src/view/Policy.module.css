@@ -1,0 +1,424 @@
+.wrapper {
+    background-color: #fdfdfd;
+    color: #122;
+    font-family: system-ui, Arial, sans-serif;
+    padding-bottom: 80px;
+    width: 100%;
+  }
+
+
+
+.banner {
+  background-image: url('../assets/take-action.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 70vh;
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  margin-bottom: 0;
+  padding: 0;
+}
+
+.bannerOverlay {
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 40px 60px;
+  box-sizing: border-box;
+  color: white;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
+.bannerOverlay h1 {
+  font-size: 32px;
+  font-weight: bold;
+  margin: 0 0 20px;
+  letter-spacing: 1px;
+}
+
+.bannerOverlay p {
+  font-size: 16px;
+  line-height: 1.6;
+  max-width: 960px;
+  margin: 0;
+}
+
+.policySection {
+  padding: 40px 20px;
+  background-color: #e6efe7;
+  border-radius: 24px;
+  margin: 60px auto;
+  max-width: 960px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.05);
+}
+
+.sectionTitle {
+  font-size: 22px;
+  font-weight: 700;
+  text-align: center;
+  margin: 0 0 24px;
+  color: #12391e;
+  text-underline-offset: 6px;
+  letter-spacing: 1px;
+}
+
+.underlinedTitle {
+  text-decoration: underline;
+  text-underline-offset: 6px;
+}
+
+.card {
+  background-color: #fff;
+  border-radius: 16px;
+  padding: 32px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  line-height: 1.8;
+  font-size: 16px;
+  color: #222;
+}
+
+.card ul {
+  padding-left: 20px;
+  margin-top: 16px;
+}
+
+.card ul li {
+  list-style: none;
+  margin-bottom: 12px;
+  position: relative;
+  padding-left: 26px;
+  transition: transform 0.2s ease;
+}
+
+.card ul li:hover {
+  transform: translateX(4px);
+}
+
+.card ul li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.2em;
+}
+
+.accordionWrapper {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.accordionItem {
+  background-color: #e5f0e7;
+  border-radius: 6px;
+  padding: 16px 20px;
+  margin: 10px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  font-family: Georgia, serif;
+  font-size: 16px;
+  color: #12391e;
+  transition: background-color 0.3s ease;
+}
+
+.accordionItem:hover {
+  background-color: #d7e7dc;
+}
+
+.accordionIcon {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.accordionContent {
+  background-color: #f2f8f4;
+  border-radius: 6px;
+  padding: 16px 20px;
+  margin-top: 8px;
+  font-size: 15px;
+  line-height: 1.6;
+  color: #222;
+  border-left: 4px solid #12391e;
+}
+
+.buttonGroup {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  margin-top: 32px;
+}
+
+.actionButton {
+  background-color: #2e533b;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 12px 28px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.actionButton:hover {
+  background-color: #1d3d2b;
+}
+
+.yellowButton {
+  background-color: #ffd938;
+  color: #1d3d2b;
+  border: none;
+  border-radius: 12px;
+  font-weight: bold;
+  font-size: 16px;
+  padding: 12px 24px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.yellowButton:hover {
+  background-color: #f4c500;
+}
+
+.actionCards {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  margin-top: 40px;
+}
+
+.actionCards .card {
+  background-color: transparent;
+  box-shadow: none;
+  border-radius: 0;
+  padding: 0;
+  text-align: center;
+  flex: 1;
+}
+
+.actionCards img {
+  width: 120px;
+  height: auto;
+  margin-bottom: 24px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.modalContent {
+  position: relative;
+  background-color: #fff;
+  border-radius: 16px;
+  padding: 40px;
+  max-width: 600px;
+  width: 90%;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+  color: #12391e;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.modalContent h3 {
+  margin-top: 0;
+  font-size: 20px;
+  font-weight: bold;
+  color: #12391e;
+}
+
+.modalContent p {
+  font-weight: 600;
+  margin-top: 20px;
+}
+
+.modalContent label {
+  display: inline-block;
+  margin-right: 20px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.modalContent input[type="radio"] {
+  margin-right: 6px;
+}
+
+.quizWrapper {
+  font-family: system-ui, sans-serif;
+  color: #12391e;
+  font-size: 16px;
+  padding: 24px;
+  background-color: #f8fbf9;
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+}
+
+.quizWrapper h3 {
+  font-size: 20px;
+  margin-bottom: 12px;
+}
+
+.intro {
+  font-size: 14px;
+  margin-bottom: 24px;
+  color: #334;
+}
+
+.quizQuestion {
+  margin-bottom: 24px;
+}
+
+.quizQuestion p {
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.quizOptions label {
+  display: inline-block;
+  margin-right: 20px;
+  cursor: pointer;
+  padding: 6px 10px;
+  border-radius: 6px;
+  transition: background-color 0.2s ease;
+}
+
+.quizOptions input[type="radio"] {
+  margin-right: 6px;
+  accent-color: #1d3d2b;
+}
+
+.quizSubmitButton {
+  margin-top: 24px;
+  padding: 12px 28px;
+  background-color: #ffd938;
+  color: #1d3d2b;
+  border: none;
+  font-weight: bold;
+  border-radius: 12px;
+  cursor: pointer;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.quizSubmitButton:hover {
+  background-color: #f4c500;
+}
+
+@media (max-width: 768px) {
+  .banner {
+    height: 100vh;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .bannerOverlay h1 {
+    font-size: 24px;
+  }
+
+  .carouselButtons {
+    flex-direction: column;
+    gap: 16px;
+  }
+}
+.closeButton {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  background: transparent;
+  border: none;
+  font-size: 26px;
+  font-weight: bold;
+  color: #333;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.closeButton:hover {
+  color: #000;
+}
+
+.policyModalContent {
+  position: relative;
+  background-color: #fff;
+  border-radius: 16px;
+  padding: 40px;
+  width: 90%;
+  max-width: 960px;
+  max-height: 80vh;         
+  overflow-y: auto;         
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+body.modalOpen {
+  overflow: hidden;
+}
+
+
+.policyGrid {
+  column-count: 3;
+  column-gap: 24px;
+  padding: 16px 0;
+}
+
+
+
+.policyCard {
+  break-inside: avoid;
+  background-color: #f9fdf9;
+  border: 2px solid #0c4822;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 24px;
+  display: block;
+}
+@media (max-width: 1024px) {
+  .policyGrid {
+    column-count: 2;
+  }
+}
+@media (max-width: 600px) {
+  .policyGrid {
+    column-count: 1;
+  }
+}
+
+.policyCard h3 {
+  font-size: 16px;
+  color: #1c5c30;
+  margin-bottom: 10px;
+}
+.policyCard ul {
+  padding-left: 20px;
+  margin-top: 12px;
+}
+.policyCard li {
+  list-style: none;
+  margin-bottom: 6px;
+}
+
+.showMoreButton {
+  background: none;
+  border: none;
+  color: #1d3d2b;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 8px;
+  padding: 0;
+}
+
+.showMoreButton:hover {
+  text-decoration: underline;
+}
