@@ -8,7 +8,9 @@ const issueOptions = [
   'Bushfires',
   'Land Clearing',
   'Urban Expansion',
-  'Agricultural Expansion'
+  'Agricultural Expansion',
+  'Report logging',
+  'Report land clearing'
 ];
 
 const modifierOptions = {

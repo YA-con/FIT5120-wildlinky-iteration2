@@ -1,12 +1,5 @@
 import React, { useState } from "react";
 import styles from "./Policy.module.css";
-import nationalTreeDay from '../assets/national-tree-day.jpg';
-import centralHighlands from '../assets/Central-Highlands.png';
-import nativeForest from '../assets/Native-Forest.png';
-import gellibrand from '../assets/Goolengook-Forest.png';
-import littleDesert from '../assets/Little-Desert.png';
-import boxIronbark from '../assets/Box-Ironbark.png';
-import banner from "../assets/take-action.jpg";
 import Quiz from "./Quiz";
 import { useNavigate } from "react-router-dom";
 import HeaderOverlay from '../components/HeaderOverlay';
@@ -244,8 +237,8 @@ const TakeAction = () => {
         </div>
       </div>
       <section className={styles.policySection}>
-        <h2 className={`${styles.sectionTitle} ${styles.underlinedTitle}`}>
-          🌱 WHY YOUR VOICE MATTERS ?
+        <h2 className={`${styles.sectionTitle}`}>
+          WHY YOUR VOICE MATTERS ?
         </h2>
         <div className={styles.card}>
           <p>
@@ -258,7 +251,7 @@ const TakeAction = () => {
         <br />
         <br />
         <br />
-        <h2 className={`${styles.sectionTitle} ${styles.underlinedTitle}`}>
+        <h2 className={`${styles.sectionTitle}`}>
           WHAT YOU CAN DO ?
         </h2>
         <div className={styles.actionCards}>
