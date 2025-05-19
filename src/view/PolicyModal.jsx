@@ -6,7 +6,9 @@ const PolicyModal = ({ onClose }) => {
   const [showAll, setShowAll] = useState({});
 
   useEffect(() => {
-    fetch("https://fit5120-t28-wildlinky.onrender.com/api/policies-with-supporters")
+    fetch(
+      "https://fit5120-t28-wildlinky.onrender.com/api/policies-with-supporters"
+    )
       .then((res) => res.json())
       .then((data) => setPolicies(data))
       .catch((err) => console.error("Failed to fetch policies:", err));
@@ -18,8 +20,9 @@ const PolicyModal = ({ onClose }) => {
         <button className={styles.closeButton} onClick={onClose}>
           ×
         </button>
-        <h2 className={styles.sectionTitle}>Parliamentary Votes on Australia's Environmental 
-        Future</h2>
+        <h2 className={styles.sectionTitle}>
+          Parliamentary Votes on Australia's Environmental Future
+        </h2>
         <p
           style={{
             color: "#911",
@@ -34,16 +37,16 @@ const PolicyModal = ({ onClose }) => {
           <br />
           We show which elected representatives have supported or opposed these
           policies based on how they voted in Parliament.
-        </p>
+        </p >
 
         <div className={styles.policyGrid}>
           {policies.map((policy) => (
             <div key={policy.id} className={styles.policyCard}>
               <h3>🌱 {policy.name}</h3>
-              <p>{policy.description}</p>
+              <p>{policy.description}</p >
               <p>
                 <strong>Supporters in Victoria:</strong>
-              </p>
+              </p >
               {policy.supporters.length > 0 ? (
                 <>
                   <ul>
@@ -71,10 +74,20 @@ const PolicyModal = ({ onClose }) => {
                   )}
                 </>
               ) : (
-                <p style={{ fontStyle: "italic", color: "#555" }}>None</p>
+                <p style={{ fontStyle: "italic", color: "#555" }}>None</p >
               )}
             </div>
           ))}
+          <div className={styles.lookupWrapper}>
+            <a
+              href="https://theyvoteforyou.org.au/divisions/all"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.lookupButton}
+            >
+              Look up your MP
+            </a >
+          </div>
         </div>
       </div>
     </div>
