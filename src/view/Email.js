@@ -202,7 +202,7 @@ const Email = () => {
 
               <label className={styles.subTitle}>Optional: Add your specific concern or policy focus</label>
               <textarea
-                className={styles.textarea}
+                className={styles.textareaSmall}
                 value={policyFocus}
                 onChange={(e) => setPolicyFocus(e.target.value)}
                 placeholder="Type your policy focus here..."
@@ -256,7 +256,7 @@ const Email = () => {
 
               <label className={styles.subTitle}>Generated Email:</label>
               <textarea
-                className={styles.textarea}
+                className={styles.textareaLarge}
                 value={emailContent}
                 onChange={(e) => setEmailContent(e.target.value)}
                 placeholder="Your AI-generated email will appear here..."
@@ -266,8 +266,8 @@ const Email = () => {
                 <button className={styles.copyBtn} onClick={handleCopy}>
                   {copied ? '✅ Copied!' : 'Copy to Clipboard'}
                 </button>
-                <button className={styles.moreBtn} onClick={() => navigate('/policy')}>
-                  More Action
+                <button className={styles.moreBtn} onClick={() => navigate('/your-way')}>
+                  Choose Your Way to Act
                 </button>
               </div>
             </section>

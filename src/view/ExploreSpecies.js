@@ -127,6 +127,14 @@ const ExploreSpecies = () => {
               <p></p>
             )}
           </div>
+          <div className={styles.warningBanner}>
+            <h2>Projected Biodiversity Loss: 1000 Species by 2034</h2>
+          </div>
+
+          <div className={styles.threatText}>
+            <p><strong>Victoria is racing toward a biodiversity collapse. Native species are vanishing.</strong></p>
+            <p><strong>Over 1000 could be lost by 2034. This is your moment to help change the outcome.</strong></p>
+          </div>
           <section className={styles.mapbox}>
             <div style={{ width: "100%", height: "100vh", overflowY: "auto" }}>
               <iframe
@@ -144,7 +152,7 @@ const ExploreSpecies = () => {
       <ChatWidget />
 
       <div className={styles.carouselButtons}>
-        <button onClick={() => navigate("/policy")}>Help them</button>
+        <button onClick={() => navigate("/policy")}>See the Political Landscape</button>
       </div>
     </main>
   );

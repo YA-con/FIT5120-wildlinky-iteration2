@@ -242,3 +242,22 @@
 .carouselButtons button:hover {
   background-color: #1d3d2b;
 }
+.warningBanner {
+  background-color: #ffffff;
+  color: #000000;
+  padding: 1.5rem 2rem 0; /* remove bottom padding */
+  margin: 1rem auto 0;     /* remove bottom margin */
+  text-align: center;
+  font-size: 1.6rem;
+  font-weight: 600;
+  max-width: 1000px;
+}
+
+.threatText {
+  margin-top: 0.2rem;  /* very tight */
+  padding-top: 0;
+  padding-bottom: 0;
+  text-align: center;
+}
+
+

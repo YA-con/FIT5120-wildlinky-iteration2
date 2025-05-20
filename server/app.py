@@ -3,7 +3,7 @@ from flask_cors import CORS
 from supabase import create_client
 from dotenv import load_dotenv
 from geopy.distance import geodesic
-import openai
+from openai import OpenAI
 import os
 import math
 
@@ -13,11 +13,16 @@ load_dotenv()
 app = Flask(__name__)
 CORS(app, origins="*")
 
-
-
 url = os.getenv("SUPABASE_URL")
 key = os.getenv("SUPABASE_KEY")
-openai.api_key = os.getenv("OPENAI_API_KEY")
+openrouter_api_key = os.getenv("OPENROUTER_API_KEY")
+
+supabase = create_client(url, key)
+
+client = OpenAI(
+    base_url="https://openrouter.ai/api/v1",
+    api_key=openrouter_api_key,
+)
 
 print(f"[DEBUG] SUPABASE_URL: {url,key}")
 
@@ -173,17 +178,18 @@ def chat():
         return jsonify({"error": "Missing message"}), 400
 
     try:
-        response = openai.ChatCompletion.create(
-            model="gpt-4",
-            messages=[
-                {"role": "user", "content": user_message}
-            ],
-            temperature=0.7
+        completion = client.chat.completions.create(
+            extra_headers={
+                "HTTP-Referer": "https://wildlinky.com/#/",
+                "X-Title": "Wildlinky"
+            },
+            model="deepseek/deepseek-v3-base:free",
+            messages=[{"role": "user", "content": user_message}]
         )
-        reply = response['choices'][0]['message']['content'].strip()
+        reply = completion.choices[0].message.content.strip()
         return jsonify({"reply": reply})
     except Exception as e:
-        print(f"Error communicating with OpenAI: {e}")
+        print(f"Error communicating with OpenRouter: {e}")
         return jsonify({"error": "Failed to get response"}), 500
 
 @app.route('/api/policies-with-supporters', methods=['GET'])
@@ -324,7 +330,6 @@ def get_council_by_postcode():
 
 @app.route('/api/generate-email', methods=['POST'])
 def generate_email():
-
     data = request.get_json()
     issue = data.get('issue', '')
     focus = data.get('focus', '')
@@ -333,7 +338,6 @@ def generate_email():
     if not issue:
         return jsonify({'error': 'Missing issue'}), 400
 
-    mod_text = ', '.join([f"{k}: {v}" for k, v in modifiers.items()]) or 'None'
     prompt = f"""
     You are writing an advocacy email to a local Victorian council. Follow the user's inputs and preferences strictly.
 
@@ -359,13 +363,15 @@ def generate_email():
     """
 
     try:
-        response = openai.ChatCompletion.create(
-            model="gpt-4",
-            messages=[{"role": "user", "content": prompt}],
-            temperature=0.7,
-            max_tokens=500
+        completion = client.chat.completions.create(
+            extra_headers={
+                "HTTP-Referer": "https://wildlinky.com/#/",
+                "X-Title": "Wildlinky"
+            },
+            model="deepseek/deepseek-v3-base:free",
+            messages=[{"role": "user", "content": prompt}]
         )
-        reply = response['choices'][0]['message']['content'].strip()
+        reply = completion.choices[0].message.content.strip()
         return jsonify({'email': reply})
     except Exception as e:
         print(f"Error generating email: {e}")
