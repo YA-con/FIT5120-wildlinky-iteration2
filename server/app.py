@@ -6,6 +6,7 @@ from geopy.distance import geodesic
 from openai import OpenAI
 import os
 import math
+import traceback
 
 
 load_dotenv()
@@ -15,14 +16,20 @@ CORS(app, origins="*")
 
 url = os.getenv("SUPABASE_URL")
 key = os.getenv("SUPABASE_KEY")
-openrouter_api_key = os.getenv("OPENROUTER_API_KEY")
 
 supabase = create_client(url, key)
 
+openrouter_api_key = os.getenv("OPENROUTER_API_KEY")
+if not openrouter_api_key:
+    raise Exception("OPENROUTER_API_KEY not found in .env file")
+
 client = OpenAI(
     base_url="https://openrouter.ai/api/v1",
-    api_key=openrouter_api_key,
+    api_key=openrouter_api_key
 )
+
+print("[DEBUG] API key loaded:", openrouter_api_key is not None)
+
 
 print(f"[DEBUG] SUPABASE_URL: {url,key}")
 
@@ -330,52 +337,90 @@ def get_council_by_postcode():
 
 @app.route('/api/generate-email', methods=['POST'])
 def generate_email():
-    data = request.get_json()
-    issue = data.get('issue', '')
-    focus = data.get('focus', '')
-    modifiers = data.get('modifiers', {})
-
-    if not issue:
-        return jsonify({'error': 'Missing issue'}), 400
-
-    prompt = f"""
-    You are writing an advocacy email to a local Victorian council. Follow the user's inputs and preferences strictly.
-
-    ISSUE:
-    "{issue}"
-
-    USER'S SPECIFIC CONCERN (if provided):
-    "{focus or 'No specific concern provided.'}"
-
-    PREFERRED EMAIL STYLE:
-    - Length: {modifiers.get('Length', 'Auto')}
-    - Style: {modifiers.get('Style', 'Auto')}
-    - Tone: {modifiers.get('Tone', 'Auto')}
-    - Mood: {modifiers.get('Mood', 'Auto')}
-
-    Please write a respectful, persuasive, and impactful advocacy email starting with:
-    "Dear Council,"
-
-    And ending with:
-    "Sincerely, A concerned Victorian resident"
-
-    Make sure the message reflects the issue, user concern (if any), and style preferences.
-    """
-
     try:
+        data = request.get_json()
+
+        issue = data.get('issue', '').strip()
+        focus = data.get('focus', '').strip() or 'No specific concern provided.'
+        modifiers = data.get('modifiers', {}) or {}
+
+        if not issue:
+            return jsonify({'error': 'Missing issue'}), 400
+
+        # Extract modifiers with defaults
+        length = modifiers.get('Length', 'Auto')
+        style = modifiers.get('Style', 'Auto')
+        tone = modifiers.get('Tone', 'Auto')
+        mood = modifiers.get('Mood', 'Auto')
+
+        # Construct prompt
+        prompt = f"""
+You are writing an advocacy email to a local Victorian council. Follow the user's inputs and preferences strictly.
+
+ISSUE:
+"{issue}"
+
+USER'S SPECIFIC CONCERN:
+"{focus}"
+
+PREFERRED EMAIL STYLE:
+- Length: {length}
+- Style: {style}
+- Tone: {tone}
+- Mood: {mood}
+
+Please write a respectful, persuasive, and impactful advocacy email starting with:
+"Dear Council,"
+
+And ending with:
+"Sincerely, A concerned Victorian resident"
+
+Ensure the message reflects the issue, user concern (if any), and style preferences.
+"""
+
+        print("[DEBUG] Prompt:\n", prompt)
+
+        # Make LLM call with attribution
         completion = client.chat.completions.create(
+            model="deepseek/deepseek-chat-v3-0324:free",
+            messages=[{"role": "user", "content": prompt}],
             extra_headers={
-                "HTTP-Referer": "https://wildlinky.com/#/",
-                "X-Title": "Wildlinky"
-            },
-            model="deepseek/deepseek-v3-base:free",
-            messages=[{"role": "user", "content": prompt}]
+                "HTTP-Referer": "https://wildlinky.org",
+                "X-Title": "WildLinky"
+            }
         )
-        reply = completion.choices[0].message.content.strip()
-        return jsonify({'email': reply})
+
+        # Log full response structure
+        raw_json = completion.model_dump_json(indent=2)
+        print("[DEBUG] Raw LLM response:\n", raw_json)
+
+        # Extract message content safely
+        choices = getattr(completion, "choices", [])
+        if choices:
+            message = getattr(choices[0].message, "content", "").strip()
+            if message:
+                print("[DEBUG] Final Email:\n", message)
+                return jsonify({'email': message})
+            else:
+                print("[ERROR] Message content was empty.")
+        else:
+            print("[ERROR] No choices returned.")
+
+        # Fallback response if model failed
+        fallback_email = (
+            "Dear Council,\n\n"
+            "I am writing to express concern about the current environmental issues in Victoria. "
+            "Please consider urgent action to protect our forests and biodiversity.\n\n"
+            "Sincerely,\nA concerned Victorian resident"
+        )
+        return jsonify({'email': fallback_email, 'note': 'Fallback response used due to empty LLM output.'})
+
     except Exception as e:
-        print(f"Error generating email: {e}")
-        return jsonify({'error': 'Failed to generate email'}), 500
+        import traceback
+        traceback.print_exc()
+        return jsonify({'error': 'LLM request failed', 'details': str(e)}), 500
+
+
 
 
 def initialize_server_data():

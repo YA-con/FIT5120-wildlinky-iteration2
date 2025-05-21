@@ -51,69 +51,76 @@ const Email = () => {
   };
 
   const handlePostcodeSearch = async () => {
-    const trimmed = postcode.trim();
-  
-    if (!/^\d+$/.test(trimmed)) {
-      setValidationMsg('❌ Postcode can only contain numbers!');
-      setCouncil(null);
-      return;
-    }
-  
-    if (trimmed.length !== 4) {
-      setValidationMsg('❌ Please enter a 4-digit postcode!');
-      setCouncil(null);
-      return;
-    }
-  
-    try {
-      const res = await fetch(`https://fit5120-t28-wildlinky.onrender.com/api/council?postcode=${trimmed}`);
-      const data = await res.json();
-  
-      if (data && data.name) {
-        setCouncil(data);
-        setValidationMsg('');
-      } else {
-        setCouncil(null);
-        setValidationMsg('❌ This is an invalid postcode!');
-      }
-    } catch (err) {
-      console.error('Error fetching council info:', err);
-      setValidationMsg('❌ The query failed. Please try again later.');
-      setCouncil(null);
-    }
-  };  
+  const trimmed = postcode.trim();
 
+  if (!/^\d+$/.test(trimmed)) {
+    setValidationMsg('❌ Postcode can only contain numbers!');
+    setCouncil(null);
+    return;
+  }
+
+  if (trimmed.length !== 4) {
+    setValidationMsg('❌ Please enter a 4-digit postcode!');
+    setCouncil(null);
+    return;
+  }
+
+  try {
+    const res = await fetch(`https://fit5120-t28-wildlinky.onrender.com/api/council?postcode=${trimmed}`);
+
+
+    const data = await res.json();
+
+    if (data && data.name) {
+      setCouncil(data);
+      setValidationMsg('');
+    } else {
+      setCouncil(null);
+      setValidationMsg('❌ This is an invalid postcode!');
+    }
+  } catch (err) {
+    console.error('Error fetching council info:', err);
+    setValidationMsg('❌ The query failed. Please try again later.');
+    setCouncil(null);
+  }
+};
   const handleGenerate = async () => {
-    if (!selectedIssue) {
-      alert('Please select an issue before generating.');
-      return;
+  if (!selectedIssue) {
+    alert('Please select an issue before generating.');
+    return;
+  }
+
+  setLoading(true);
+  setCopied(false);
+
+  try {
+    const res = await fetch('https://fit5120-t28-wildlinky.onrender.com/api/generate-email', {
+
+
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        issue: selectedIssue,
+        focus: policyFocus,
+        modifiers: modSettings
+      })
+    });
+
+    const data = await res.json();
+    console.log("📨 Response from backend:", data);
+
+    if (data.error) {
+      setEmailContent(`⚠️ ${data.error}`);
+    } else {
+      setEmailContent(data.email || '⚠️ No content returned');
     }
-    setLoading(true);
-    setCopied(false);
-
-    try {
-      const res = await fetch('https://fit5120-t28-wildlinky.onrender.com/api/generate-email', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          issue: selectedIssue,
-          focus: policyFocus,
-          modifiers: modSettings
-        })
-      });
-
-      const data = await res.json();
-      setEmailContent(data.email || 'Error: No content generated.');
-
-      if (data.email) {
-      }
-    } catch (err) {
-      setEmailContent('Error generating email. Please try again.');
-    } finally {
-      setLoading(false);
-    }
-  };
-
+  } catch (err) {
+    console.error('❌ Network or server error:', err);
+    setEmailContent('❌ Failed to connect to the backend.');
+  } finally {
+    setLoading(false);
+  }
+};
   return (
     <main className={styles.contailer}>
       <div className={styles.banner}>
@@ -202,7 +209,7 @@ const Email = () => {
 
               <label className={styles.subTitle}>Optional: Add your specific concern or policy focus</label>
               <textarea
-                className={styles.textareaSmall}
+                className={styles.textarea}
                 value={policyFocus}
                 onChange={(e) => setPolicyFocus(e.target.value)}
                 placeholder="Type your policy focus here..."
@@ -256,7 +263,7 @@ const Email = () => {
 
               <label className={styles.subTitle}>Generated Email:</label>
               <textarea
-                className={styles.textareaLarge}
+                className={styles.textarea}
                 value={emailContent}
                 onChange={(e) => setEmailContent(e.target.value)}
                 placeholder="Your AI-generated email will appear here..."

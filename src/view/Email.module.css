@@ -81,9 +81,9 @@
   box-sizing: border-box;
 }
 
-.textareaSmall {
+.textarea {
   width: 100%;
-  height: 120px;
+  height: 200px;
   padding: 14px;
   font-size: 16px;
   border: 1px solid #07431E;
@@ -92,19 +92,6 @@
   background-color: white;
   overflow-y: auto;
 }
-
-.textareaLarge {
-  width: 100%;
-  height: 240px; /* Larger for generated email */
-  padding: 14px;
-  font-size: 16px;
-  border: 1px solid #07431E;
-  border-radius: 4px;
-  resize: none;
-  background-color: white;
-  overflow-y: auto;
-}
-
 
 .textarea:disabled {
   background-color: #f4f4f4;
@@ -270,24 +257,21 @@
 .customSelectWrapper {
   position: relative;
   width: 100%;
-  font-size: 16px;
+  font-size: 15px;
 }
 
 .customSelectHeader {
   background-color: white;
-  border: 2px solid #07431E;
-  border-radius: 6px;
-  padding: 16px 20px;
+  border: 1px solid #07431E;
+  border-radius: 4px;
+  padding: 12px 16px;
   cursor: pointer;
   display: flex;
   justify-content: space-between;
   align-items: center;
   color: #000;
   box-sizing: border-box;
-  font-size: 16px;
-  height: 60px; /* Increased height */
 }
-
 
 .customSelectList {
   position: absolute;
