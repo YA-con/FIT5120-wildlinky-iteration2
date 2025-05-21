@@ -48,10 +48,9 @@ const Home = () => {
         />
 
         <div className={styles.heroOverlay}>
-          <h1>Forest loss is killing our wildlife – and we’re letting it happen</h1>
+          <h1>Forest loss is killing our wildlife and we’re letting it happen</h1>
           <p>
-            Learn about forest loss, meet the species at risk,
-            and discover how your voice can make a difference.
+            See the damage, know what's at stake, and help shape the political will to protect our forests.
           </p>
           <div className={styles.downArrow} onClick={() => scrollTo('section1')}>⏷</div>
         </div>
