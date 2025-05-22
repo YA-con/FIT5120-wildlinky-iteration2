@@ -251,12 +251,12 @@ const Email = () => {
                 onClick={handleGenerate}
                 disabled={loading}
               >
-                {loading ? 'Generating...' : '✨ Generate My Email'}
+                {loading ? 'Generating...' : 'Generate Email'}
               </button>
 
               <label className={styles.subTitle}>Generated Email:</label>
-              <textarea
-                className={styles.textarea}
+              <emailtextarea
+                className={styles.emailtextarea}
                 value={emailContent}
                 onChange={(e) => setEmailContent(e.target.value)}
                 placeholder="Your AI-generated email will appear here..."
@@ -264,7 +264,7 @@ const Email = () => {
 
               <div style={{ display: 'flex', gap: '16px' }}>
                 <button className={styles.copyBtn} onClick={handleCopy}>
-                  {copied ? '✅ Copied!' : 'Copy to Clipboard'}
+                  {copied ? '✅ Copied!' : 'Copy'}
                 </button>
                 <button className={styles.moreBtn} onClick={() => navigate('/policy')}>
                   More Action

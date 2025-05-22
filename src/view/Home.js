@@ -5,7 +5,7 @@ import animal2 from '../assets/animal2.png';
 import animal3 from '../assets/animal3.png';
 import animal4 from '../assets/animal4.png';
 import policyImg from '../assets/before-after.png';
-import emailIcon from '../assets/email-template.jpg';
+import emailIcon from '../assets/send-email.jpg';
 import { useNavigate } from 'react-router-dom';
 import HeaderOverlay from '../components/HeaderOverlay';
 
@@ -48,7 +48,7 @@ const Home = () => {
         />
 
         <div className={styles.heroOverlay}>
-          <h1>Forest loss is killing our wildlife – and we’re letting it happen</h1>
+          <h1>Forest loss is killing our wildlife, and we’re letting it happen</h1>
           <p>
             Learn about forest loss, meet the species at risk,
             and discover how your voice can make a difference.
@@ -65,7 +65,7 @@ const Home = () => {
             <p><strong>14%</strong> of Victoria’s native forest cover has been lost since 2000</p>
             <p>Over <strong>500 species</strong> in Victoria are listed as threatened or endangered.</p>
             <p><strong>2%</strong> of land holds over <strong>75%</strong> of biodiversity in some regions.</p>
-            <button onClick={() => navigate('/forest-habitat')}>Discover policies</button>
+            <button onClick={() => navigate('/forest-habitat')}>Discover more</button>
           </div>
           <div className={styles.sectionImagesGrid}>
             <img src={animal1} alt="Species 1" />
@@ -99,7 +99,7 @@ const Home = () => {
             <h2 className={styles.sectionNumber}>03</h2>
             <h2>Speak Up with Confidence</h2>
             <p>
-              Use our ready-to-go email tool to raise your voice.
+              Use our AI-generated email tool to make your voice heard.
               Pick a topic, add your message, and send it to someone who can make a difference.
             </p>
             <button onClick={() => navigate('/email')}>Write email</button>
@@ -113,7 +113,7 @@ const Home = () => {
       <div className={styles.successOverlay}>
           <h2 className={styles.bannerTitle}>Success stories</h2>
           <p className={styles.bannerText}>
-            These real victories prove that your voice and actions matter — together, we can protect our forests.
+            These real victories prove that your voice and actions matter together, we can protect our forests.
           </p>
           <div className={styles.bannerButtons}>
             <button onClick={() => navigate('/your-way')}>Discover more</button>

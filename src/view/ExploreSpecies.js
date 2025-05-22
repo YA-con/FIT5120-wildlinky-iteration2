@@ -50,14 +50,21 @@ const ExploreSpecies = () => {
               logging, clearing, and fire, their homes are vanishing — fast.
             </p>
             <p className={styles.description}>
-              Source: SPRAT Database, Australian Government (DCCEEW).
+              Source:{" "}
+              <a
+                href="https://www.environment.gov.au/cgi-bin/sprat/public/spratlookupspecies.pl?searchtype=Sciname&name=Diomedea%20antipodensis%20gibsoni"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                SPRAT Database, Australian Government (DCCEEW)
+              </a>.
             </p>
           </div>
         </div>
       </div>
 
       <div className={styles.sectionTitle}>
-        Where Are They Now? — Tracking Threatened Species in a Changing Forest
+        Where Are They Now? Tracking Threatened Species in a Changing Forest
       </div>
       <div className={styles.introTitle}>
         This map shows how sightings of the top five species that have received
@@ -127,6 +134,22 @@ const ExploreSpecies = () => {
               <p></p>
             )}
           </div>
+          </div>
+      </section>
+
+      <div className={styles.sectionTitle}>
+        At This Rate, Victoria’s Native Fauna May Cross 1000 Threatened Species by 2034
+      </div>
+      <div className={styles.introTitle}>
+        Every year, more of Victoria’s unique animals are being added to the threatened species list.<br />
+        This chart shows the cumulative rise in threatened fauna from 2001 to today.<br />
+        <span className={styles.redText}>
+        If current patterns continue, over 1000 species could be under threat by 2034, just 10 years from now.<br />
+        </span>
+        This isn’t just a statistic — it's a warning, and you can be part of what changes this.
+      </div>
+      <section className={styles.findBox}>
+        <div className={styles.resultsRow}>
           <section className={styles.mapbox}>
             <div style={{ width: "100%", height: "100vh", overflowY: "auto" }}>
               <iframe
@@ -144,7 +167,7 @@ const ExploreSpecies = () => {
       <ChatWidget />
 
       <div className={styles.carouselButtons}>
-        <button onClick={() => navigate("/policy")}>Help them</button>
+        <button onClick={() => navigate("/policy")}>Explore Policies</button>
       </div>
     </main>
   );

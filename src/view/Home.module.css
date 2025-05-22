@@ -50,7 +50,7 @@
 }
 
 .downArrow {
-  font-size: 40px;
+  font-size: 80px;
   color: #f6c948;
   cursor: pointer;
   bottom: 16px;
@@ -59,7 +59,7 @@
   transform: translateX(-50%);
   z-index: 10;
   animation: bounce 1.5s infinite ease-in-out;
-  transition: transform 0.3s ease;
+  transition: transform 0.5s ease;
 }
 
 .downArrow:hover {
@@ -76,7 +76,7 @@
 }
 
 .section {
-  height: 85vh;
+  height: 75vh;
   display: flex;
   align-items: center; 
   justify-content: center;
@@ -138,6 +138,8 @@
   margin-top: 20px;
   font-size: 16px;
   cursor: pointer;
+  width: 180px;
+  font-weight: bold;
 }
 
 .sectionText button:hover {
@@ -161,8 +163,8 @@
 .sectionImgLeft,
 .sectionImgRight {
   width: 100%;
-  height: auto;
-  max-width: 500px;
+  height: 600px;
+  max-width: 520px;
   object-fit: cover;
   border-radius: 0;
 }
@@ -196,7 +198,7 @@
 }
 
 .successOverlay {
-  background-color: rgba(0, 0, 0, 0.25);
+  background-color: rgba(0, 0, 0, 0.3);
   padding: 60px 20px;
   width: 100%;
   height: 100%;
@@ -221,17 +223,19 @@
 }
 
 .bannerButtons button {
-  background-color: #2e533b;
-  color: white;
+  background-color: #f6c948;
+  color: black;
   border: none;
   border-radius: 6px;
   padding: 12px 28px;
   font-size: 16px;
   cursor: pointer;
+  width: 180px;
+  font-weight: bold;
 }
 
 .bannerButtons button:hover {
-  background-color: #1d3d2b;
+  background-color: #e5b800;
 }
 
 .chartSection {
@@ -272,6 +276,7 @@
   padding: 12px 28px;
   font-size: 16px;
   cursor: pointer;
+  width: 180px;
 }
 
 .carouselButtons button:hover {

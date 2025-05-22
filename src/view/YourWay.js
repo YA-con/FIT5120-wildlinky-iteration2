@@ -175,16 +175,16 @@ const YourWay = () => {
         <div className={styles.bannerOverlay}>
         <HeaderOverlay />
           <h1>Raise your voice. Make forest protection happen.</h1>
-          <p>Be part of the solution – support forest campaigns, sign petitions, and inspire change.</p>
+          <p>Be part of the solution: support forest campaigns, sign petitions, and inspire change.</p>
         </div>
       </div>
 
       <section className={`${styles.section} ${styles.volunteerSection}`}>
 
-      <h1 className={styles.title}>
+      <h1 className={styles.sectionTitle}>
         Join a campaign and make a difference today!
       </h1>
-      <p className={styles.subtitle}>Explore real-world volunteering roles:</p>
+      <p className={styles.sectionIntro}>Explore real world volunteering roles:</p>
 
       {opportunities.map((item) => (
         <div key={item.id} className={styles.card}>
@@ -228,7 +228,7 @@ const YourWay = () => {
       <section className={`${styles.section} ${styles.chartSection}`}>
         <h2 className={styles.sectionTitle}>Success stories</h2>
         <p className={styles.sectionIntro}>
-          These real victories prove that your voice and actions matter — together, we can protect our forests.
+          These real victories prove that your voice and actions matter together, we can protect our forests.
         </p>
 
         <div className={styles.chartGrid}>
@@ -282,7 +282,7 @@ const YourWay = () => {
             <img src={gellibrand} alt="Goolengook Forest Saved" />
             <div className={styles.overlay}>
               <h3>Goolengook Forest Saved</h3>
-              <p>Community-led protest camps and public support led to long-term protection of Goolengook forest in East Gippsland.</p>
+              <p>Community led protest camps and public support led to long-term protection of Goolengook forest in East Gippsland.</p>
             </div>
           </a>
 

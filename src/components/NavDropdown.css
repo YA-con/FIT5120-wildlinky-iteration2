@@ -15,7 +15,23 @@
   .nav-button:hover {
     color: #f6c948;
   }
+
+  .dropdown-item {
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 10px 16px;
+    display: block;
+  }
   
+  .dropdown-item:hover {
+    color: #f6c948;
+  }
+  
+  .dropdown-item.active {
+    color: #f6c948;
+  }
+
   .arrow {
     font-size: 20px;   
     font-weight: 800;

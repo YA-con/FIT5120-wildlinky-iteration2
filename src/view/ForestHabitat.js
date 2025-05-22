@@ -107,11 +107,11 @@ const ForestHabitat = () => {
           <div className={styles.bannerOverlay}>
             <HeaderOverlay />
             <h1>
-              Discover Victoria’s Wildlife <br />
-              Through the Forests They Call Home.
+              Discover Victoria’s Wildlife Through Their Disappearing Forest Habitats.
             </h1>
             <p>
-              Explore species native to Victoria’s forests, understand their threats, and find out how you can help protect their habitats.
+            Victoria’s forests are vanishing — and with them, the wildlife that depends on them. 
+            Learn about native species, the urgent threats they face, and what you can do to protect these shrinking ecosystems.
             </p>
           </div>
         </div>
@@ -119,7 +119,7 @@ const ForestHabitat = () => {
 
       <div className={styles.introBlock}>
         <h2 className={styles.title}>
-          Victoria is losing its forests faster than ever — what does that mean for life within them?
+          Victoria is losing its forests faster than ever, what does that mean for life within them?
         </h2>
         <ForestLossChart />
         <div ref={ref} className={`${styles.numbersBox} ${inView ? styles.fadeIn : ''}`}>
@@ -172,7 +172,6 @@ const ForestHabitat = () => {
         </div>
         <div className={styles.carouselButtons}>
           <button onClick={() => navigate('/explore-species')}>Explore species</button>
-          <button onClick={() => navigate('/policy')}>Policy & Protection</button>
         </div>
       </div>
 

@@ -7,8 +7,8 @@
 }
 
 .banner {
-  background: url('../assets/banner2.png') center/cover no-repeat;
-  height: 70vh;
+  background: url('../assets/habitat-pic.jpg') bottom/cover no-repeat;
+  height: 60vh;
   width: 100%;
   position: relative;
   display: flex;
@@ -19,7 +19,7 @@
 .bannerOverlay {
   width: 100%;
   background-color: rgba(0, 0, 0, 0.5);
-  padding: 40px 60px;
+  padding: 20px 60px;
   box-sizing: border-box;
   color: #fff;
   font-family: 'Helvetica Neue', Arial, sans-serif;
@@ -39,7 +39,7 @@
 }
 
 .introBlock {
-  padding: 80px 20px;
+  padding: 20px 20px;
   max-width: 1200px;
   margin: 0 auto;
   text-align: center;
@@ -48,16 +48,16 @@
 
 .introBlock .title,
 .sectionTitle {
-  margin-top: 50px;
-  margin-bottom: 40px; 
-  font-size: 28px;
+  margin-top: 40px;
+  margin-bottom: 20px; 
+  font-size: 32px;
   font-weight: bold;
   line-height: 1.6;
   text-align: center;
 }
 
 .section {
-  background-color: #f0f7f2;
+  background-color: #fff;
   padding: 30px 20px;
 }
 
@@ -128,7 +128,7 @@
   padding: 0 10px;
   box-sizing: border-box;
   overflow: hidden;
-  border-radius: 12px;
+  border-radius: 2px;
   height: 280px;
 }
 
@@ -136,7 +136,7 @@
   width: 100%;
   height: 280px;
   object-fit: cover;
-  border-radius: 12px;
+  border-radius: 2px;
   transition: transform 0.3s ease;
 }
 
@@ -152,17 +152,19 @@
 }
 
 .carouselButtons button {
-  background-color: #2e533b;
-  color: white;
+  background-color: #f6c948;
+  color: rgb(0, 0, 0);
   border: none;
-  border-radius: 6px;
+  border-radius: 4px;
   padding: 12px 28px;
   font-size: 16px;
   cursor: pointer;
+  width: 180px;
+  font-weight: bold;
 }
 
 .carouselButtons button:hover {
-  background-color: #1d3d2b;
+  background-color: #e5b800;
 }
 
 .overlay {
@@ -173,7 +175,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 12px;
+  border-radius: 2px;
   opacity: 0;
   transition: opacity 0.3s ease;
 }
@@ -465,8 +467,8 @@ color: #222;
 
 .forestThreats {
 margin-top:0;
-background-color: #fff;
-padding: 100px 10px;
+background-color: #f9f9f9;
+padding: 40px 10px;
 text-align: center;
 }
 
@@ -498,7 +500,7 @@ width: 100%;
 height: 200px;
 background-size: cover;
 background-position: center;
-border-radius: 8px;
+border-radius: 2px;
 position: relative;
 overflow: hidden;
 }
@@ -532,7 +534,7 @@ position: relative;
 height: 200px;
 background-size: cover;
 background-position: center;
-border-radius: 12px;
+border-radius: 2px;
 overflow: hidden;
 cursor: pointer;
 }

@@ -7,7 +7,7 @@
 }
 
 .sectionTitle {
-  font-size: 28px;
+  font-size: 32px;
   font-weight: bold;
   margin-top: 50px;
   margin-bottom: 24px;
@@ -16,8 +16,8 @@
 
 .introTitle {
   text-align: center;
-  max-width: 800px;
-  margin: 0 auto 40px auto;
+  max-width: 1000px;
+  margin: 0 auto 8px auto; 
   font-size: 18px;
   line-height: 1.6;
   color: #122;
@@ -25,8 +25,8 @@
 
 .findBox {
   background: #fff;
-  border-radius: 24px;
-  padding: 48px 32px;
+  border-radius: 2px;
+  padding: 18px 32px;
   max-width: 1200px;
   margin: 80px auto;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
@@ -167,7 +167,7 @@
   width: 220px;
   min-height: 120px;
   padding: 1.2rem;
-  border-radius: 12px;
+  border-radius: 8px;
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
   transition: transform 0.3s ease;
   background-color: #f0f0f0;
@@ -201,9 +201,18 @@
   margin-bottom: 1rem;
 }
 
+.description a {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.description a:hover {
+  color: #e69421;
+}
+
 .highlightRed {
-  color: #a24028;
-  font-weight: 600;
+  color: #e69421;
+  font-weight: 900;
 }
 
 .extinct {
@@ -230,15 +239,28 @@
 }
 
 .carouselButtons button {
-  background-color: #2e533b;
-  color: white;
+  background-color: #f6c948;
+  color: rgb(0, 0, 0);
   border: none;
   border-radius: 6px;
   padding: 12px 28px;
   font-size: 16px;
   cursor: pointer;
+  width: 180px;
+  font-weight: bold;
 }
 
 .carouselButtons button:hover {
-  background-color: #1d3d2b;
+  background-color: #e5b800;
+}
+
+.redText {
+  color: red;
+  font-weight: bold;
+}
+
+.pageBackground {
+  background-color: #f9f9f9;
+  min-height: 100vh;
+  
 }

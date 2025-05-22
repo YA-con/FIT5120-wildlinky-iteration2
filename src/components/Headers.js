@@ -86,14 +86,16 @@ const Headers = () => {
             <Link
               to="/"
               style={{
-                color: 'white',
+                color: location.pathname === '/' ? '#f6c948' : 'white',
                 fontWeight: '800',
                 fontSize: '20px',
                 textDecoration: 'none',
                 padding: '8px'
               }}
               onMouseEnter={(e) => (e.target.style.color = '#f6c948')}
-              onMouseLeave={(e) => (e.target.style.color = 'white')}
+              onMouseLeave={(e) => {
+                if (location.pathname !== '/') e.target.style.color = 'white';
+              }}
             >
               Home
             </Link>
@@ -101,19 +103,22 @@ const Headers = () => {
             <NavDropdown
               title="What’s happening"
               items={navItems[0].items}
+              active={navItems[0].items.some(item => location.pathname.startsWith(item.to))}
             />
 
             <Link
               to="/policy"
               style={{
-                color: 'white',
+                color: location.pathname === '/policy' ? '#f6c948' : 'white',
                 fontWeight: '800',
                 fontSize: '20px',
                 textDecoration: 'none',
                 padding: '8px'
               }}
               onMouseEnter={(e) => (e.target.style.color = '#f6c948')}
-              onMouseLeave={(e) => (e.target.style.color = 'white')}
+              onMouseLeave={(e) => {
+                if (location.pathname !== '/policy') e.target.style.color = 'white';
+              }}
             >
               Policy & Protection
             </Link>
@@ -121,6 +126,7 @@ const Headers = () => {
             <NavDropdown
               title="Take action"
               items={navItems[2].items}
+              active={navItems[2].items.some(item => location.pathname.startsWith(item.to))}
             />
           </Flex>
         )}

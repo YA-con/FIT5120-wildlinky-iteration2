@@ -1,17 +1,4 @@
-    .title {
-    font-size: 28px;
-    font-weight: 700;
-    margin-bottom: 16px;
-    color: #333;
-  }
-  
-  .subtitle {
-    font-size: 16px;
-    font-weight: 500;
-    margin-bottom: 20px;
-    color: #333;
-  }
-  
+   
   .filterGroup {
     display: flex;
     gap: 12px;
@@ -124,7 +111,7 @@
     background-image: url('../assets/take-action.jpg');
     background-size: cover;
     background-position: center;
-    height: 70vh;
+    height: 60vh;
     width: 100%;
     position: relative;
     display: flex;
@@ -166,9 +153,10 @@
   }
   
   .sectionTitle {
-    font-size: 28px;
+    font-size: 32px;
     font-weight: bold;
     margin-bottom: 40px;
+    text-align: center;
   }
   
   .sectionIntro {

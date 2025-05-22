@@ -4,6 +4,9 @@ import Quiz from "./Quiz";
 import { useNavigate } from "react-router-dom";
 import HeaderOverlay from '../components/HeaderOverlay';
 import PolicyModal from "./PolicyModal";
+import realLogging from '../assets/ILLEGAL-LOGGING.jpg';
+import realVote from '../assets/voting.jpg';
+import realEmail from '../assets/send-email.jpg';
 
 const TakeAction = () => {
   const [openIndex, setOpenIndex] = useState(5);
@@ -117,10 +120,10 @@ const TakeAction = () => {
           </p>
           <p>
             🌿 <strong>Why it matters:</strong> Local councils use this law to
-            approve or reject forest-clearing projects.
+            approve or reject forest clearing projects.
           </p>
           <p>
-            📄 <strong>Status:</strong> In Use — Councils apply this daily
+            📄 <strong>Status:</strong> In Use: Councils apply this daily
           </p>
           <p>
             🔗<strong>Link:</strong>{" "}
@@ -170,7 +173,7 @@ const TakeAction = () => {
         <div>
           <p>
             📄 <strong>What it is about:</strong> Big projects that might harm
-            the environment (like large-scale logging or road development) need
+            the environment (like large scale logging or road development) need
             an Environment Effects Statement (EES).
           </p>
           <p>
@@ -229,65 +232,19 @@ const TakeAction = () => {
       <div className={styles.banner}>
         <div className={styles.bannerOverlay}>
         <HeaderOverlay />
-          <h1>Clear Policies. Stronger Voice.</h1>
+          <h1>Your Voice. Your Power. Your Planet.</h1>
           <p>
-            Under the EPBC Act, anyone can speak up and report activities that
-            may harm Australia’s wildlife and their habitats!
+          Politics makes a difference — speak up under the EPBC Act to stop actions that harm Australia’s wildlife and habitats.
           </p>
         </div>
       </div>
-      <section className={styles.policySection}>
-        <h2 className={`${styles.sectionTitle}`}>
-          WHY YOUR VOICE MATTERS ?
-        </h2>
+      <section className={styles.voiceSection}>
+        <h2 className={styles.sectionTitle}>Why your voice matters?</h2>
         <div className={styles.card}>
-          <p>
-            Policies determine how much forest get cleared, species are
-            protected, and who is held accountable. One report, email, or vote
-            could help save the forest.
-          </p>
-        </div>
-        <br />
-        <br />
-        <br />
-        <br />
-        <h2 className={`${styles.sectionTitle}`}>
-          WHAT YOU CAN DO ?
-        </h2>
-        <div className={styles.actionCards}>
-          <div className={styles.card}>
-            <img src="/logging.png" alt="logging" />
-            <h3>REPORT ILLEGAL LOGGING</h3>
-            <p>If you see forests being cleared illegally, make a report.</p>
-            <button
-              onClick={() => setShowQuizModal(true)}
-              className={styles.yellowButton}
-            >
-              Report to local council
-            </button>
-          </div>
-          <div className={styles.card}>
-            <img src="/vote.png" alt="vote" />
-            <h3>VOTE FOR NATURE</h3>
-            <p>Elect representatives with positive forest policies.</p>
-            <button
-              onClick={() => setShowPolicyModal(true)}
-              className={styles.yellowButton}
-            >
-              Look up your MP
-            </button>
-          </div>
-          <div className={styles.card}>
-            <img src="/email.png" alt="email" />
-            <h3>SEND A POLICY EMAIL</h3>
-            <p>Ask local representatives to safeguard forests.</p>
-            <button
-              onClick={() => navigate("/email")}
-              className={styles.yellowButton}
-            >
-              Create a draft email
-            </button>
-          </div>
+        <p className={styles.sectionText}>
+          Policies determine how much forest gets cleared, species are protected, and who is held accountable.
+          One report, email, or vote could help save the forest.
+        </p>
         </div>
       </section>
 
@@ -342,28 +299,31 @@ const TakeAction = () => {
         <PolicyModal onClose={() => setShowPolicyModal(false)} />
       )}
 
-      <section>
+      <section className={styles.informedSection}>
         <h2 className={styles.sectionTitle}>Get Informed</h2>
-        <div className={styles.accordionWrapper}>
-          {accordionData.map((item, index) => (
-            <div
-              key={index}
-              className={styles.accordionItem}
-              onClick={() => toggleAccordion(index)}
-            >
-              <div>{item.title}</div>
-              <div className={styles.accordionIcon}>
-                {openIndex === index ? "−" : "+"}
+        <div className={styles.cardWhiteShadow}>
+          <div className={styles.accordionWrapper}>
+            {accordionData.map((item, index) => (
+              <div
+                key={index}
+                className={styles.accordionItem}
+                onClick={() => toggleAccordion(index)}
+              >
+                <div>{item.title}</div>
+                <div className={styles.accordionIcon}>
+                  {openIndex === index ? "−" : "+"}
+                </div>
+                {openIndex === index && item.content && (
+                  <div className={styles.accordionContent}>{item.content}</div>
+                )}
               </div>
-              {openIndex === index && item.content && (
-                <div className={styles.accordionContent}>{item.content}</div>
-              )}
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </section>
 
-      <section className={styles.policySection}>
+
+      <section className={styles.quizSection}>
         <h2 className={styles.sectionTitle}>Test Your Knowledge</h2>
         <div className={styles.card}>
           {quizStarted ? (
@@ -427,6 +387,48 @@ const TakeAction = () => {
           </div>
         </div>
       )}
+
+      <section className={styles.actionSection}>
+        <h2 className={styles.sectionTitle}>What you can do?</h2>
+        <div className={styles.imageCards}>
+          <div className={styles.imageCard}>
+            <div className={styles.imageCardImage} style={{ backgroundImage: `url(${realLogging})` }}>
+              <div className={styles.imageCardOverlay}>
+                <h3>REPORT ILLEGAL LOGGING</h3>
+              </div>
+            </div>
+            <p>If you see forests being cleared illegally, make a report.</p>
+            <button onClick={() => setShowQuizModal(true)} className={styles.yellowButton}>
+              Report to local council
+            </button>
+          </div>
+
+          <div className={styles.imageCard}>
+            <div className={styles.imageCardImage} style={{ backgroundImage: `url(${realVote})` }}>
+              <div className={styles.imageCardOverlay}>
+                <h3>VOTE FOR NATURE</h3>
+              </div>
+            </div>
+            <p>Elect representatives with positive forest policies.</p>
+            <button onClick={() => setShowPolicyModal(true)} className={styles.yellowButton}>
+              Look up your MP
+            </button>
+          </div>
+
+          <div className={styles.imageCard}>
+            <div className={styles.imageCardImage} style={{ backgroundImage: `url(${realEmail})` }}>
+              <div className={styles.imageCardOverlay}>
+                <h3>SEND A POLICY EMAIL</h3>
+              </div>
+            </div>
+            <p>Ask local representatives to safeguard forests.</p>
+            <button onClick={() => navigate("/email")} className={styles.yellowButton}>
+              Create a draft email
+            </button>
+          </div>
+        </div>
+      </section>
+
     </div>
   );
 };
