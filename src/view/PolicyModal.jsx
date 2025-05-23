@@ -76,6 +76,17 @@ const PolicyModal = ({ onClose }) => {
             </div>
           ))}
         </div>
+
+        <a
+          href="https://theyvoteforyou.org.au/divisions/all"
+          target="_blank"
+          rel="noopener noreferrer"
+          className={styles.externalLinkBtn}
+        >
+          Lock up your MP
+        </a>
+
+
       </div>
     </div>
   );
