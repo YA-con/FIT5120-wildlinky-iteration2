@@ -255,8 +255,8 @@ const Email = () => {
               </button>
 
               <label className={styles.subTitle}>Generated Email:</label>
-              <emailtextarea
-                className={styles.emailtextarea}
+              <textarea
+                className={styles.generatedTextarea}
                 value={emailContent}
                 onChange={(e) => setEmailContent(e.target.value)}
                 placeholder="Your AI-generated email will appear here..."
